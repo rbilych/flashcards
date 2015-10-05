@@ -1,0 +1,6 @@
+<% @cards.each do |card| %>
+  <p>Original text: <strong><%= card.original_text %></strong></p>
+  <p>Translated text: <strong><%= card.translated_text %></strong></p>
+  <p>Review date: <strong><%= card.review_date %></strong></p>
+  <hr>
+<% end %>
