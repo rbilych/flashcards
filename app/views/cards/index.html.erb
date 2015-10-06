@@ -2,5 +2,11 @@
   <p>Original text: <strong><%= card.original_text %></strong></p>
   <p>Translated text: <strong><%= card.translated_text %></strong></p>
   <p>Review date: <strong><%= card.review_date.strftime("%d/%m/%Y") %></strong></p>
+  <p>
+    <%= link_to "Show", card_path(card) %>
+    <%= link_to "Edit", edit_card_path(card) %>
+    <%= link_to "Delete", card_path(card), method: :delete,
+                          data: { confirm: "Are you sure?" } %>
+  </p>
   <hr>
 <% end %>
