@@ -1,2 +1,9 @@
 <h1>Add new card</h1>
-<%= render 'card_form' %>
+
+<%= simple_form_for(@card, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :review_date, as: :hidden,
+              input_html: { value: 3.days.from_now } %>
+  <%= f.input :original_text %>
+  <%= f.input :translated_text %>
+  <%= f.button :submit %>
+<% end %>
