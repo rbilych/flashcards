@@ -1,10 +1,10 @@
-require 'open-uri'
+require "open-uri"
 
 URL = "http://iloveenglish.ru/vocabulary/verbs-words"
 words = []
 
-page = Nokogiri::HTML(open(URL)).css('div.singers tr>td:nth-child(2)')
-page.search('span').remove
+page = Nokogiri::HTML(open(URL)).css("div.singers tr>td:nth-child(2)")
+page.search("span").remove
 
 page.each do |word|
   words << word.content if word.content != ""
