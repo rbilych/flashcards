@@ -5,7 +5,7 @@ class Card < ActiveRecord::Base
   protected
 
   def text_fields_not_same
-    if original_text.downcase == translated_text.downcase
+    if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
       errors.add(:original_text,
                  'Оригинальный текст не должен быть равен переведенному')
     end
