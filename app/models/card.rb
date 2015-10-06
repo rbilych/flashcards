@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
   validate :text_fields_not_same
 
   after_initialize do
-    self.review_date = 3.days.from_now if self.review_date.nil?
+    self.review_date ||= 3.days.from_now
   end
 
   protected
