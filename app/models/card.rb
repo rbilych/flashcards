@@ -2,6 +2,10 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, presence: true
   validate :text_fields_not_same
 
+  after_initialize do
+    self.review_date = 3.days.from_now if self.review_date.nil?
+  end
+
   protected
 
   def text_fields_not_same
