@@ -7,9 +7,9 @@ class Card < ActiveRecord::Base
   end
 
   scope :rand_card, -> {
-    where("review_date <= :today", today: Date.today)
-    .order("RANDOM()")
-    .limit(1)
+    where("review_date <= :today", today: Date.today).
+    order("RANDOM()").
+    limit(1)
   }
 
   def self.check_answer(answer, original_text, current_card_id)
