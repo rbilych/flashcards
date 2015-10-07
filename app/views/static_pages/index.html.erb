@@ -1,11 +1,21 @@
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, class: name %>
+<% if flash[:alert] %>
+  <% flash[:alert].each do |alert| %>
+    <% if alert %>
+      <p class="alert alert-success">Правильно</p>
+    <% else %>
+      <p class="alert alert-danger">Неправильно</p>
+    <% end %>
+  <% end %>
 <% end %>
 
-<% if @card %>
-  <h1><%= @card.translated_text %></h1>
+<% if @cards.count > 0 %>
   <%= form_tag answer_path do %>
-    <%= text_field_tag :answer %>
+    <% @cards.each do |card| %>
+      <h1><%= card.translated_text %></h1>
+      <%= hidden_field_tag "original_text[]", card.original_text %>
+      <%= text_field_tag "answer[]" %>
+    <% end %>
+    <br>
     <button>Answer</button>
   <% end %>
 <% else %>
