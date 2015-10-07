@@ -1,3 +1,15 @@
-<div class="jumbotron">
-  <h2 class="text-center">Первый в мире удобный менеджер флеш-карточек. Именно так.</h2>
-</div>
+<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, class: name %>
+<% end %>
+
+<% if @card %>
+  <h1><%= @card.translated_text %></h1>
+  <%= form_tag answer_path do %>
+    <%= hidden_field_tag 'current_card_id', @card.id %>
+    <%= hidden_field_tag 'original_text', @card.original_text %>
+    <%= text_field_tag :answer %>
+    <button>Answer</button>
+  <% end %>
+<% else %>
+  <h1>Нет карточек для изучения</h1>
+<% end %>

@@ -1,6 +1,6 @@
 <%= simple_form_for(card, html: { class: 'form-horizontal' }) do |f| %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
-  <%= f.input :review_date, default: (3.days.from_now if card.new_record?) %>
+  <%= f.input :review_date, default: (Card.change_review_date if card.new_record?) %>
   <%= f.button :submit %>
 <% end %>
