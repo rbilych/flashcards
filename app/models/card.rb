@@ -2,9 +2,7 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, presence: true
   validate :text_fields_not_same
 
-  before_validation on: :create do
-    self.review_date ||= change_review_date
-  end
+  before_validation :change_review_date, on: :create
 
   scope :for_review, -> {
     where("review_date <= :today", today: Date.today).
@@ -21,11 +19,11 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def self.change_review_date
-    3.days.from_now
-  end
-
   protected
+
+  def change_review_date
+    self.review_date ||= 3.days.from_now
+  end
 
   def text_fields_not_same
     if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
