@@ -7,8 +7,9 @@ page.search("span").remove
 
 page.each do |word|
   w = word.content if word.content != ""
+  puts w
   unless w.nil?
-    w.split(/—/)
+    w = w.split(/—/)
     Card.create(original_text: w[0].strip, translated_text: w[1].strip)
   end
 end
