@@ -7,15 +7,16 @@ class Card < ActiveRecord::Base
   end
 
   scope :rand_card, -> { where("review_date <= :today", today: Date.today)
-                        .order("RANDOM()")
-                        .limit(1) }
+    .order("RANDOM()")
+    .limit(1)
+  }
 
   def self.check_answer(answer, original_text, current_card_id)
     if answer.downcase.strip == original_text.downcase.strip
       Card.find(current_card_id).update(review_date: change_review_date)
-      alert = "Правильно"
+      "Правильно"
     else
-      alert = "Неправильно"
+      "Неправильно"
     end
   end
 
