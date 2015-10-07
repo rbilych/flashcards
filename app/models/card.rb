@@ -6,7 +6,7 @@ class Card < ActiveRecord::Base
     self.review_date ||= change_review_date
   end
 
-  scope :rand_card, -> {
+  scope :for_review, -> {
     where("review_date <= :today", today: Date.today).
     order("RANDOM()").
     limit(1)

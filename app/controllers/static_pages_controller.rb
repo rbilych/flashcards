@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   def index
-    @card = Card.rand_card.first
+    @card = Card.for_review.first
   end
 
   def answer
