@@ -12,9 +12,9 @@ class Card < ActiveRecord::Base
     limit(1)
   }
 
-  def self.check_answer(answer, original_text, current_card_id)
-    if answer.downcase.strip == original_text.downcase.strip
-      Card.find(current_card_id).update(review_date: change_review_date)
+  def check_answer(answer)
+    if answer.downcase.strip == self.original_text.downcase.strip
+      self.update(review_date: 3.days.from_now)
       "Правильно"
     else
       "Неправильно"
