@@ -1,0 +1,14 @@
+<% if alert %>
+  <h3><%= alert %></h3>
+<% end %>
+
+<% if @card %>
+  <h1><%= @card.translated_text %></h1>
+  <%= form_tag answer_path do %>
+    <%= hidden_field_tag "card_id", @card.id %>
+    <%= text_field_tag :answer %>
+    <button>Answer</button>
+  <% end %>
+<% else %>
+  <h1>Нет карточек для изучения</h1>
+<% end %>

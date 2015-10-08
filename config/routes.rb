@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  root "static_pages#index"
+  root "reviews#new"
   resources :cards
-  post "answer" => "static_pages#answer"
+  resources :reviews, only: [:new, :create]
+  post "answer" => "reviews#update"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
