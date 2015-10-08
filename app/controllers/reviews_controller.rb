@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
     @card = Card.for_review.first
   end
 
-  def update
+  def create
     @card = Card.find(review_params[:card_id])
 
     if @card.check_answer(review_params[:answer])
@@ -18,6 +18,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.permit(:card_id, :answer)
+    params.require(:review).permit(:card_id, :answer)
   end
 end
