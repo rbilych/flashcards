@@ -4,18 +4,12 @@ class Card < ActiveRecord::Base
 
   before_validation :change_review_date, on: :create
 
-  def self.for_review(count)
-    where("review_date <= ?", Date.today).
-    order("RANDOM()").
-    limit(count)
-  end
+  scope :for_review, -> { where("review_date <= ?", Date.today).
+                          order("RANDOM()") }
 
-  def check_answer(answer, original_text)
+  def check_answer(answer)
     if answer.mb_chars.downcase.strip == original_text.mb_chars.downcase.strip
-      self.update(review_date: 3.days.from_now)
-      true
-    else
-      false
+      update(review_date: 3.days.from_now)
     end
   end
 

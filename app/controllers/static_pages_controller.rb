@@ -1,23 +1,17 @@
 class StaticPagesController < ApplicationController
-  before_action :find_card
-
   def index
+    @card = Card.for_review.first
   end
 
   def answer
-    @cards.each_with_index do |card, index|
-      @alert = card.check_answer params[:answer][index],
-                                 params[:original_text][index]
-      flash[:alert] ||= []
-      flash[:alert] << @alert
+    @card = Card.find(params[:card_id])
+
+    if @card.check_answer(params[:answer])
+      flash[:alert] = "Good"
+    else
+      flash[:alert] = "Bad"
     end
 
     redirect_to root_path
-  end
-
-  private
-
-  def find_card
-    @cards = Card.for_review(1)
   end
 end
