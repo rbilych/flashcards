@@ -14,6 +14,8 @@ gem 'simple_form', '~> 3.2.0'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.3.3'
+  gem 'factory_girl_rails', '~> 4.5.0'
 end
 
 group :development do
