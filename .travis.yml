@@ -7,7 +7,7 @@ env:
   - DB=postgres
 
 before_script:
-  - cp config/database.travis.yml config/database.yml
+  - cp config/database.yml.sample config/database.yml
   - bundle exec rake db:create db:migrate db:schema:load
 
 after_script:
