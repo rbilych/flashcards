@@ -16,6 +16,12 @@ group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'capybara', '~> 2.5.0'
+  gem 'database_cleaner', '~> 1.5.0'
+end
+
+group :test do
+  gem 'rake', '~> 10.4.2'
 end
 
 group :development do
