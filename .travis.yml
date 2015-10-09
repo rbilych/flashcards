@@ -9,6 +9,3 @@ env:
 before_script:
   - cp config/database.yml.sample config/database.yml
   - bundle exec rake db:create db:migrate db:schema:load
-
-after_script:
-  - bundle_cache
