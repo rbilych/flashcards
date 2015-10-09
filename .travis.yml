@@ -1,29 +1,14 @@
 language: ruby
 
 rvm:
-  - 2.1.6
-  - jruby-19mode
-  - jruby-head
+  - 2.2.3
 
-jdk:
-  - openjdk6
-  - openjdk7
+env:
+  - DB=postgres
 
-services:
-  - rabbitmq
+before_script:
+  - cp config/database.travis.yml config/database.yml
+  - bundle exec rake db:create db:migrate db:schema:load
 
-sudo: false
-
-cache: bundler
-
-matrix:
-  exclude:
-    - rvm: 2.1.6
-      jdk: openjdk7
-    - rvm: 2.1.6
-      jdk: oraclejdk7
-    - rvm: jruby-head
-      jdk: openjdk6
-  allow_failures:
-    - rvm: jruby-head
-      jdk: openjdk7
+after_script:
+  - bundle_cache

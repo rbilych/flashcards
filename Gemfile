@@ -20,6 +20,10 @@ group :development, :test do
   gem 'database_cleaner', '~> 1.5.0'
 end
 
+group :test do
+  gem 'rake', '~> 10.4.2'
+end
+
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
