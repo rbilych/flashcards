@@ -8,21 +8,27 @@ class Card < ActiveRecord::Base
                           order("RANDOM()") }
 
   def check_answer(answer)
-    if answer.mb_chars.downcase.strip == original_text.mb_chars.downcase.strip
-      update(review_date: 3.days.from_now)
+    if prepare_string(answer) == prepare_string(original_text)
+      update(review_date: Date.today + 3.days)
+    else
+      false
     end
   end
 
   protected
 
   def change_review_date
-    self.review_date ||= 3.days.from_now
+    self.review_date ||= Date.today + 3.days
   end
 
   def text_fields_not_same
-    if original_text.mb_chars.downcase == translated_text.mb_chars.downcase
+    if prepare_string(original_text) == prepare_string(translated_text)
       errors.add(:original_text,
                  "Оригинальный текст не должен быть равен переведенному")
     end
+  end
+
+  def prepare_string(string)
+    string.mb_chars.downcase.strip
   end
 end
