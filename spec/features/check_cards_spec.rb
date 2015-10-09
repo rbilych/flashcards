@@ -3,11 +3,12 @@ require "rails_helper"
 feature "check cards" do
   given(:card) { build :card }
 
-  before { card.save }
-
-  scenario "user can see card if card exist" do
+  before do
+    card.save
     visit root_path
+  end
 
+  scenario "user can see card if card for review exist" do
     expect(page).to have_content(card.translated_text)
   end
 
@@ -19,8 +20,6 @@ feature "check cards" do
   end
 
   scenario "user gives correct answer" do
-    visit root_path
-
     fill_in "Answer", with: card.original_text
     click_on "Check"
 
@@ -28,8 +27,6 @@ feature "check cards" do
   end
 
   scenario "user gives correct answer with strange argument" do
-    visit root_path
-
     fill_in "Answer", with: " oriGinAl  "
     click_on "Check"
 
@@ -37,8 +34,6 @@ feature "check cards" do
   end
 
   scenario "user gives incorrect answer" do
-    visit root_path
-
     fill_in "Answer", with: "incorrect"
     click_on "Check"
 
