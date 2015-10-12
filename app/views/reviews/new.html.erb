@@ -1,14 +1,5 @@
-<% if alert %>
-  <h3><%= alert %></h3>
-<% end %>
-
-<% if @card %>
-  <h1><%= @card.translated_text %></h1>
-  <%= simple_form_for :review, url: answer_path do |f| %>
-    <%= f.hidden_field :card_id, value: @card.id %>
-    <%= f.input :answer, as: :string %>
-    <%= f.submit "Check" %>
-  <% end %>
+<% if current_user %>
+  <%= render 'review_card' %>
 <% else %>
-  <h1>Нет карточек для изучения</h1>
+  <%= render 'welcome' %>
 <% end %>

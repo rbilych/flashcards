@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_action :require_login, except: :new
+
   def new
     @card = Card.for_review.first
   end
@@ -7,7 +9,7 @@ class ReviewsController < ApplicationController
     @card = Card.find(review_params[:card_id])
 
     if @card.check_answer(review_params[:answer])
-      flash[:alert] = "Good"
+      flash[:notice] = "Good"
     else
       flash[:alert] = "Bad"
     end

@@ -21,14 +21,27 @@
 
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Все карточки", cards_path %></li>
-          <li><%= link_to "Добавить карточку", new_card_path %></li>
+          <% if current_user %>
+            <li><%= link_to "Все карточки", cards_path %></li>
+            <li><%= link_to "Добавить карточку", new_card_path %></li>
+            <li><%= link_to "Edit profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "Logout", log_out_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign Up", sign_up_path %></li>
+            <li><%= link_to "Log In", log_in_path %></li>
+          <% end %>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 
   <div class="container">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% elsif alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
     <%= yield %>
   </div>
 
