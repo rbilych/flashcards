@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :reviews, only: [:new, :create]
   post "answer" => "reviews#create"
 
-  resources :users
+  resources :users, only: [:new, :edit, :create, :update]
   get '/sign_up', to: 'users#new', as: :sign_up
 
   resources :sessions, only: [:new, :create, :destroy]

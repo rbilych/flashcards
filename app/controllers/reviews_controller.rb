@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :require_login, except: :new
 
   def new
-    @card = Card.for_review.first
+    @card = current_user.cards.for_review.first if logged_in?
   end
 
   def create
