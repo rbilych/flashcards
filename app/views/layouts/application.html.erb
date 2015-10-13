@@ -24,7 +24,7 @@
           <% if current_user %>
             <li><%= link_to "Все карточки", cards_path %></li>
             <li><%= link_to "Добавить карточку", new_card_path %></li>
-            <li><%= link_to "Edit profile", edit_user_path(current_user) %></li>
+            <li><%= link_to "Profile", edit_user_path(current_user) %></li>
             <li><%= link_to "Logout", log_out_path, method: :delete %></li>
           <% else %>
             <li><%= link_to "Sign Up", sign_up_path %></li>
