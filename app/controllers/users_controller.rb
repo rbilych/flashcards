@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       flash[:alert] = "Not updated"
     end
 
-    redirect_to root_path
+    render :edit
   end
 
   private
