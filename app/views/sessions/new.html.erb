@@ -1,5 +1,7 @@
 <h1>Log in</h1>
 
+<%= link_to "Login with Twitter", auth_at_provider_path(provider: :twitter) %>
+
 <%= simple_form_for(:session,
                     url: sessions_path,
                     html: { class: 'form-horizontal' }) do |f| %>
