@@ -16,6 +16,6 @@ module FeatureHelper
     fill_in "Email", with: email
     fill_in "Password", with: password, match: :prefer_exact
     fill_in "Password confirmation", with: password
-    click_on "Create User"
+    click_on "Create Account"
   end
 end

@@ -1,0 +1,10 @@
+<h1>Edit Profile</h1>
+<h3><%= current_user.email %></h3>
+<hr>
+
+<%= simple_form_for(:profile, url: profile_path, method: :patch) do |f| %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.submit "Update User"%>
+<% end %>

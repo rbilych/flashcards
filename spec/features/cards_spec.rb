@@ -15,6 +15,14 @@ feature "Cards" do
     expect(page).to_not have_css(".card")
   end
 
+  scenario "user can't see other cards" do
+    card = create(:card, user_id: 42)
+
+    expect {
+      visit card_path(card)
+    }.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
   scenario "user can create cards" do
     click_on "Добавить карточку"
     fill_in "Original text", with: "Original"

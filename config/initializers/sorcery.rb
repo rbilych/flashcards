@@ -78,7 +78,6 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.external_providers = [:twitter]
 
-
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
   # Default: `'path/to/ca_file'`
@@ -112,8 +111,8 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.twitter.key = Rails.application.secrets.twitter_key
   config.twitter.secret = Rails.application.secrets.twitter_secret
-  config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-  config.twitter.user_info_mapping = {:email => "screen_name"}
+  config.twitter.callback_url =  Rails.application.secrets.twitter_callback
+  config.twitter.user_info_mapping = { email: "screen_name" }
   #
   # config.facebook.key = ""
   # config.facebook.secret = ""
@@ -438,7 +437,6 @@ Rails.application.config.sorcery.configure do |config|
     #
     user.authentications_class = Authentication
 
-
     # User's identifier in authentications class.
     # Default: `:user_id`
     #
@@ -449,7 +447,6 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `:provider`
     #
     # user.provider_attribute_name =
-
 
     # User's external unique identifier in authentications class.
     # Default: `:uid`
