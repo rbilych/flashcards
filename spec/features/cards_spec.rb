@@ -18,9 +18,9 @@ feature "Cards" do
   scenario "user can't see other cards" do
     card = create(:card, user_id: 42)
 
-    expect {
+    expect do
       visit card_path(card)
-    }.to raise_error(ActiveRecord::RecordNotFound)
+    end.to raise_error(ActiveRecord::RecordNotFound)
   end
 
   scenario "user can create cards" do

@@ -111,8 +111,8 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.twitter.key = Rails.application.secrets.twitter_key
   config.twitter.secret = Rails.application.secrets.twitter_secret
-  config.twitter.callback_url =  Rails.application.secrets.twitter_callback
-  config.twitter.user_info_mapping = { email: "screen_name" }
+  config.twitter.callback_url = Rails.application.secrets.twitter_callback
+  #config.twitter.user_info_mapping = { email: "screen_name" }
   #
   # config.facebook.key = ""
   # config.facebook.secret = ""
