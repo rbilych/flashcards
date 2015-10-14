@@ -1,4 +1,9 @@
+<% if card.image.exists? %>
+  <%= image_tag card.image.url %>
+<% end %>
+
 <%= simple_form_for(card, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.input :image, as: :file %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
   <%= f.input :review_date,
