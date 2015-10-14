@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  skip_before_filter :require_login, only: [:new]
+  skip_before_action :require_login
 
   def new
     @card = current_user.cards.for_review.first if logged_in?
