@@ -1,11 +1,11 @@
 require "rails_helper"
 
 feature "check cards" do
-  given(:card) { build :card }
+  let!(:user) { create(:user, email: "some@user.com", password: "123456") }
+  let!(:card) { create(:card, user_id: user.id) }
 
-  before do
-    card.save
-    visit root_path
+  before(:each) do
+    login("some@user.com", "123456")
   end
 
   scenario "user can see card if card for review exist" do

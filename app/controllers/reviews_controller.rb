@@ -1,13 +1,15 @@
 class ReviewsController < ApplicationController
+  skip_before_action :require_login
+
   def new
-    @card = Card.for_review.first
+    @card = current_user.cards.for_review.first if logged_in?
   end
 
   def create
     @card = Card.find(review_params[:card_id])
 
     if @card.check_answer(review_params[:answer])
-      flash[:alert] = "Good"
+      flash[:notice] = "Good"
     else
       flash[:alert] = "Bad"
     end
