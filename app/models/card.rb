@@ -9,6 +9,9 @@ class Card < ActiveRecord::Base
   scope :for_review, -> { where("review_date <= ?", Date.today).
                           order("RANDOM()") }
 
+  has_attached_file :image, styles: { original: "360x360#" }
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   def check_answer(answer)
     if prepare_string(answer) == prepare_string(original_text)
       update(review_date: Date.today + 3.days)

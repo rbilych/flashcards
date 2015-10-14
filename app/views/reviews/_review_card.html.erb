@@ -1,4 +1,7 @@
 <% if @card %>
+  <% if @card.image.exists? %>
+    <%= image_tag @card.image.url %>
+  <% end %>
   <h1><%= @card.translated_text %></h1>
   <%= simple_form_for :review, url: answer_path do |f| %>
     <%= f.hidden_field :card_id, value: @card.id %>

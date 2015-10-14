@@ -11,12 +11,15 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form', '~> 3.2.0'
 gem 'sorcery', '~> 0.9.1'
+gem "paperclip", "~> 4.3"
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'capybara', '~> 2.5.0'
+  gem 'dotenv-rails', '~> 2.0.2'
 end
 
 group :test do
