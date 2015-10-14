@@ -18,6 +18,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'capybara', '~> 2.5.0'
+  gem 'dotenv-rails', '~> 2.0.2'
 end
 
 group :test do

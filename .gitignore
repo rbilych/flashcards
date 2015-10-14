@@ -16,3 +16,4 @@ config/database.yml
 .ruby-version
 .ruby-gemset
 public/system
+.env
