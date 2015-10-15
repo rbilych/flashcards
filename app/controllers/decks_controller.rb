@@ -23,6 +23,15 @@ class DecksController < ApplicationController
     redirect_to decks_path
   end
 
+  def change_current_state
+    deck = Deck.find(deck_params[:deck_id])
+
+    deck.change_current
+
+    flash[:notice] = "Current deck was changed"
+    redirect_to decks_path
+  end
+
   private
 
   def find_deck
@@ -30,6 +39,6 @@ class DecksController < ApplicationController
   end
 
   def deck_params
-    params.require(:deck).permit(:title)
+    params.require(:deck).permit(:title, :deck_id)
   end
 end

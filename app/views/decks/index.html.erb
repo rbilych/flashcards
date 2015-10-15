@@ -1,4 +1,5 @@
 <h1>All Decks</h1>
+
 <%= render 'form' %>
 
 <% @decks.each do |deck| %>
@@ -6,4 +7,14 @@
     <%= link_to deck.title, deck_path(deck) %>
     (<%= deck.cards.count %>)
   </h2>
+
+  <% if deck.current %>
+    <p class="label label-primary">Current</p>
+  <% else %>
+    <%= simple_form_for :deck, url: change_current_state_path do |f| %>
+      <%= f.hidden_field :deck_id, value: deck.id %>
+      <%= f.submit "Make current" %>
+    <% end %>
+  <% end %>
+  <hr>
 <% end %>

@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
 
   resources :decks
+  post "change_current_state" => "decks#change_current_state"
 end
