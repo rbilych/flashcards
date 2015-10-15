@@ -1,1 +1,5 @@
 <h1><%= @deck.title %></h1>
+
+<% @deck.cards.each do |card| %>
+  <li><%= card.original_text %></li>
+<% end %>
