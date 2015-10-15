@@ -1,0 +1,9 @@
+<h1>All Decks</h1>
+<%= render 'form' %>
+
+<% @decks.each do |deck| %>
+  <h2>
+    <%= link_to deck.title, deck_path(deck) %>
+    (<%= deck.cards.count %>)
+  </h2>
+<% end %>
