@@ -13,4 +13,8 @@ class User < ActiveRecord::Base
   has_many :decks, dependent: :destroy
 
   accepts_nested_attributes_for :authentications
+
+  def current_deck
+    self.decks.where(current: true).first
+  end
 end
