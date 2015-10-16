@@ -42,11 +42,9 @@ class DecksController < ApplicationController
   end
 
   def change_current_state
-    deck = Deck.find(deck_params[:deck_id])
-
-    deck.change_current
-
-    flash[:notice] = "Current deck was changed"
+    if current_user.update_column(:current_deck_id, deck_params[:deck_id])
+      flash[:notice] = "Current deck was changed"
+    end
     redirect_to decks_path
   end
 

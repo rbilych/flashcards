@@ -11,7 +11,7 @@
   <p><%= link_to "Delete", deck_path(deck), method: :delete,
                  data: { confirm: "With deck will be delete all cards" } %>
 
-  <% if deck.current %>
+  <% if current_user.current_deck_id == deck.id %>
     <p class="label label-primary">Current</p>
   <% else %>
     <%= simple_form_for :deck, url: change_current_state_path do |f| %>

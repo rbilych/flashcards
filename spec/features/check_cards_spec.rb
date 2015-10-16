@@ -2,7 +2,7 @@ require "rails_helper"
 
 feature "check cards" do
   let!(:user) { create(:user, email: "some@user.com", password: "123456") }
-  let!(:deck) { create(:deck, title: "Deck", current: false) }
+  let!(:deck) { create(:deck, title: "Deck", user_id: user.id) }
   let!(:card) { create(:card, user_id: user.id, deck_id: deck.id) }
 
   before(:each) do
@@ -14,8 +14,11 @@ feature "check cards" do
   end
 
   scenario "if current deck show card from this deck" do
-    deck2 = create(:deck, title: "Deck2", current: true)
-    card2 = create(:card, deck_id: deck2.id)
+    card2 = create(:card, deck_id: deck.id)
+
+    visit decks_path
+
+    click_on "Make current"
 
     visit root_path
 
