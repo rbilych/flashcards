@@ -4,5 +4,4 @@ FactoryGirl.define do
     current false
     user_id 1
   end
-
 end

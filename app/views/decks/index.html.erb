@@ -7,6 +7,9 @@
     <%= link_to deck.title, deck_path(deck) %>
     (<%= deck.cards.count %>)
   </h2>
+  <p><%= link_to "Edit", edit_deck_path(deck) %>
+  <p><%= link_to "Delete", deck_path(deck), method: :delete,
+                 data: { confirm: "With deck will be delete all cards" } %>
 
   <% if deck.current %>
     <p class="label label-primary">Current</p>

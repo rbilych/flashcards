@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  before_action :find_deck, only: [:show]
+  before_action :find_deck, only: [:show, :edit, :update, :destroy]
   def index
     @decks = current_user.decks
   end
@@ -20,6 +20,24 @@ class DecksController < ApplicationController
       flash[:alert] = @deck.errors.full_messages.to_sentence
     end
 
+    redirect_to decks_path
+  end
+
+  def edit
+  end
+
+  def update
+    if @deck.update(deck_params)
+      flash[:notice] = "Deck udated"
+      redirect_to decks_path
+    else
+      flash[:alert] = @deck.errors.full_messages.to_sentence
+      render :edit
+    end
+  end
+
+  def destroy
+    @deck.destroy
     redirect_to decks_path
   end
 
