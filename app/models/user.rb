@@ -15,6 +15,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :authentications
 
   def current_deck
-    self.decks.where(current: true).first
+    decks.find_by(current: true)
   end
 end

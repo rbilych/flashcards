@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Deck do
   let!(:deck1) { create(:deck, title: "first", current: false) }

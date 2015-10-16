@@ -5,7 +5,7 @@ class Deck < ActiveRecord::Base
   has_many :cards, dependent: :destroy
 
   def change_current
-    self.update(current: true)
-    Deck.where("id != ?", self.id).update_all("current = 'false'")
+    update(current: true)
+    Deck.where("id != ?", id).update_all("current = 'false'")
   end
 end
