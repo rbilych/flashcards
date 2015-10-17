@@ -11,8 +11,9 @@ feature "Decks" do
   scenario "user can create deck" do
     visit decks_path
 
+    click_on "Add new deck"
     fill_in "Title", with: "My Deck"
-    click_on "Add deck"
+    click_on "Create Deck"
 
     expect(page).to have_content("My Deck")
   end

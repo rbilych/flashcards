@@ -14,7 +14,5 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :authentications
 
-  def current_deck
-    decks.find_by(id: current_deck_id)
-  end
+  belongs_to :current_deck, class_name: "Deck", foreign_key: "current_deck_id"
 end

@@ -16,6 +16,8 @@ class CardsController < ApplicationController
   end
 
   def create
+    current_user.decks.create(deck_params)
+
     @card = current_user.cards.build(card_params)
     if @card.save
       redirect_to @card
@@ -49,5 +51,9 @@ class CardsController < ApplicationController
                                  :review_date,
                                  :image,
                                  :deck_id)
+  end
+
+  def deck_params
+    params.require(:deck).permit(:title)
   end
 end
