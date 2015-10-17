@@ -2,14 +2,27 @@ require "rails_helper"
 
 feature "check cards" do
   let!(:user) { create(:user, email: "some@user.com", password: "123456") }
-  let!(:card) { create(:card, user_id: user.id) }
+  let!(:deck) { create(:deck, title: "Deck", user_id: user.id) }
+  let!(:card) { create(:card, user_id: user.id, deck_id: deck.id) }
 
   before(:each) do
     login("some@user.com", "123456")
   end
 
-  scenario "user can see card if card for review exist" do
+  scenario "if no current deck show random card" do
     expect(page).to have_content(card.translated_text)
+  end
+
+  scenario "if current deck show card from this deck" do
+    card2 = create(:card, deck_id: deck.id)
+
+    visit decks_path
+
+    click_on "Make current"
+
+    visit root_path
+
+    expect(page).to have_content(card2.translated_text)
   end
 
   scenario "user can see warning if card don't exist" do

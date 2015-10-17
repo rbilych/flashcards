@@ -16,4 +16,7 @@ Rails.application.routes.draw do
 
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
+
+  resources :decks
+  post "set_current" => "decks#set_current"
 end

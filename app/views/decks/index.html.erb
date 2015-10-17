@@ -1,0 +1,23 @@
+<h1>All Decks</h1>
+
+<%= link_to "Add new deck", new_deck_path, class: "btn btn-primary" %>
+
+<% @decks.each do |deck| %>
+  <h2>
+    <%= link_to deck.title, deck_path(deck) %>
+    (<%= deck.cards.count %>)
+  </h2>
+  <p><%= link_to "Edit", edit_deck_path(deck) %>
+  <p><%= link_to "Delete", deck_path(deck), method: :delete,
+                 data: { confirm: "With deck will be delete all cards" } %>
+
+  <% if current_user.current_deck == deck %>
+    <p class="label label-primary">Current</p>
+  <% else %>
+    <%= simple_form_for :deck, url: set_current_path do |f| %>
+      <%= f.hidden_field :deck_id, value: deck.id %>
+      <%= f.submit "Make current" %>
+    <% end %>
+  <% end %>
+  <hr>
+<% end %>

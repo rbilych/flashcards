@@ -2,7 +2,13 @@ class ReviewsController < ApplicationController
   skip_before_action :require_login
 
   def new
-    @card = current_user.cards.for_review.first if logged_in?
+    if logged_in?
+      if current_user.current_deck
+        @card = current_user.current_deck.cards.for_review.first
+      else
+        @card = current_user.cards.for_review.first
+      end
+    end
   end
 
   def create

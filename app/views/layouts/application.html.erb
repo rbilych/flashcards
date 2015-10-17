@@ -22,6 +22,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
+            <li><%= link_to "Decks", decks_path %></li>
             <li><%= link_to "Все карточки", cards_path %></li>
             <li><%= link_to "Добавить карточку", new_card_path %></li>
             <li><%= link_to "Profile", edit_profile_path(current_user) %></li>
