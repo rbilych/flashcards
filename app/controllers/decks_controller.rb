@@ -42,7 +42,7 @@ class DecksController < ApplicationController
   end
 
   def set_current
-    if current_user.update_attribute(:current_deck_id, deck_params[:deck_id])
+    if current_user.update_attributes(current_deck_id: deck_params[:deck_id])
       flash[:notice] = "Current deck was changed"
     end
     redirect_to decks_path
