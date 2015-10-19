@@ -3,6 +3,7 @@
 <% end %>
 
 <%= simple_form_for(card, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.input :image, as: :file %>
   <%= f.input :deck_id, collection: current_user.decks, include_blank: false, required: false %>
   <%= simple_fields_for :deck do |deck_form| %>

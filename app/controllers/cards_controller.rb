@@ -19,7 +19,8 @@ class CardsController < ApplicationController
     if deck_params[:title].blank?
       @card = current_user.cards.build(card_params)
     else
-      create_new_deck
+      @deck = current_user.decks.create(deck_params)
+      @card = @deck.cards.build(card_params)
     end
 
     if @card.save
@@ -53,20 +54,11 @@ class CardsController < ApplicationController
                                  :translated_text,
                                  :review_date,
                                  :image,
-                                 :deck_id)
+                                 :deck_id,
+                                 :user_id)
   end
 
   def deck_params
     params.require(:deck).permit(:title)
-  end
-
-  def create_new_deck
-    @deck = current_user.decks.create(deck_params)
-
-    @card = current_user.cards.build(
-      translated_text: card_params[:translated_text],
-      original_text: card_params[:original_text],
-      review_date: card_params[:review_date],
-      deck_id: @deck.id)
   end
 end
