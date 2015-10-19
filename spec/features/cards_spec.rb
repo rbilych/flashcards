@@ -56,4 +56,17 @@ feature "Cards" do
 
     expect(page).to_not have_css(".card")
   end
+
+  scenario "user can create deck from new card form" do
+    visit new_card_path
+
+    fill_in "Имя новой колоды", with: "New Deck"
+    fill_in "Original text", with: "Original"
+    fill_in "Translated text", with: "Translated"
+    click_on "Create Card"
+
+    visit decks_path
+
+    expect(page).to have_content("New Deck (1)")
+  end
 end

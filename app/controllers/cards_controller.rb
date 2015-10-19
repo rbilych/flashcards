@@ -16,9 +16,12 @@ class CardsController < ApplicationController
   end
 
   def create
-    current_user.decks.create(deck_params)
+    if deck_params[:title].blank?
+      @card = current_user.cards.build(card_params)
+    else
+      create_new_deck
+    end
 
-    @card = current_user.cards.build(card_params)
     if @card.save
       redirect_to @card
     else
@@ -55,5 +58,15 @@ class CardsController < ApplicationController
 
   def deck_params
     params.require(:deck).permit(:title)
+  end
+
+  def create_new_deck
+    @deck = current_user.decks.create(deck_params)
+
+    @card = current_user.cards.build(
+      translated_text: card_params[:translated_text],
+      original_text: card_params[:original_text],
+      review_date: card_params[:review_date],
+      deck_id: @deck.id)
   end
 end
