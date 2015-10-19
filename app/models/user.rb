@@ -5,15 +5,13 @@ class User < ActiveRecord::Base
 
   validates :email, presence: true
 
-  validates :password, length: { minimum: 6 },
-    if: -> { new_record? || changes["password"] }
-  validates :password, confirmation: true,
-    if: -> { new_record? || changes["password"] }
-  validates :password_confirmation, presence: true,
-    if: -> { new_record? || changes["password"] }
+  with_options if: -> { new_record? || changes["password"] } do
+    validates :password, length: { minimum: 6 }
+    validates :password, confirmation: true
+    validates :password_confirmation, presence: true
+  end
 
   validates :email, uniqueness: true
-  validates :password, confirmation: true
 
   has_many :cards, dependent: :destroy
   has_many :authentications, dependent: :destroy

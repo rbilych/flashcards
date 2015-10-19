@@ -20,7 +20,7 @@ class CardsController < ApplicationController
       @card = current_user.cards.build(card_params)
     else
       @deck = current_user.decks.create(deck_params)
-      @card = @deck.cards.build(card_params)
+      @card = @deck.cards.build(card_params.merge(user_id: current_user.id))
     end
 
     if @card.save
@@ -54,8 +54,7 @@ class CardsController < ApplicationController
                                  :translated_text,
                                  :review_date,
                                  :image,
-                                 :deck_id,
-                                 :user_id)
+                                 :deck_id)
   end
 
   def deck_params
