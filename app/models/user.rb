@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
 
   validates :email, uniqueness: true
 
-  has_many :cards, dependent: :destroy
   has_many :authentications, dependent: :destroy
+  has_many :cards, through: :decks
   has_many :decks, dependent: :destroy
 
   accepts_nested_attributes_for :authentications

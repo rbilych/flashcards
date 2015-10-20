@@ -9,7 +9,8 @@ feature "Cards" do
   end
 
   scenario "user can see only own cards" do
-    create(:card, user_id: 42)
+    deck2 = create(:deck, user_id: 42)
+    create(:card, deck_id: deck2.id)
 
     visit cards_path
 
@@ -17,7 +18,8 @@ feature "Cards" do
   end
 
   scenario "user can't see other cards" do
-    card = create(:card, user_id: 42)
+    deck2 = create(:deck, user_id: 42)
+    card = create(:card, deck_id: deck2.id)
 
     expect do
       visit card_path(card)
@@ -38,7 +40,7 @@ feature "Cards" do
   end
 
   scenario "user can edit cards" do
-    create(:card, user_id: user.id)
+    create(:card, deck_id: deck.id)
 
     visit cards_path
     click_on "Edit"
@@ -49,7 +51,7 @@ feature "Cards" do
   end
 
   scenario "user can delete cards" do
-    create(:card, user_id: user.id)
+    create(:card, deck_id: deck.id)
 
     visit cards_path
     click_on "Delete"

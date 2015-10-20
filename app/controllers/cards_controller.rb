@@ -20,7 +20,7 @@ class CardsController < ApplicationController
       @card = current_user.cards.build(card_params)
     else
       @deck = current_user.decks.create(deck_params)
-      @card = @deck.cards.build(card_params.merge(user_id: current_user.id))
+      @card = @deck.cards.build(card_params)
     end
 
     if @card.save
