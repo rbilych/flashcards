@@ -3,7 +3,7 @@ require "rails_helper"
 feature "check cards" do
   let!(:user) { create(:user, email: "some@user.com", password: "123456") }
   let!(:deck) { create(:deck, title: "Deck", user_id: user.id) }
-  let!(:card) { create(:card, user_id: user.id, deck_id: deck.id) }
+  let!(:card) { create(:card, deck_id: deck.id) }
 
   before(:each) do
     login("some@user.com", "123456")

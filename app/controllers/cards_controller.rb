@@ -16,9 +16,13 @@ class CardsController < ApplicationController
   end
 
   def create
-    current_user.decks.create(deck_params)
+    if deck_params[:title].blank?
+      @card = current_user.cards.build(card_params)
+    else
+      @deck = current_user.decks.create(deck_params)
+      @card = @deck.cards.build(card_params)
+    end
 
-    @card = current_user.cards.build(card_params)
     if @card.save
       redirect_to @card
     else

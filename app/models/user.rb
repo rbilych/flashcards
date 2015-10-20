@@ -3,13 +3,18 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  validates :email, :password, :password_confirmation, presence: true
-  validates :email, uniqueness: true
-  validates :password, length: { minimum: 6 }
-  validates :password, confirmation: true
+  validates :email, presence: true
 
-  has_many :cards, dependent: :destroy
+  with_options if: -> { new_record? || changes["password"] } do
+    validates :password, length: { minimum: 6 }
+    validates :password, confirmation: true
+    validates :password_confirmation, presence: true
+  end
+
+  validates :email, uniqueness: true
+
   has_many :authentications, dependent: :destroy
+  has_many :cards, through: :decks
   has_many :decks, dependent: :destroy
 
   accepts_nested_attributes_for :authentications
