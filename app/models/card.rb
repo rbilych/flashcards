@@ -19,18 +19,16 @@ class Card < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def check_answer(answer)
-    if prepare_string(answer) == prepare_string(original_text)
+    if(result = prepare_string(answer) == prepare_string(original_text))
       change_box
-      flash = true
     else
       update(mistakes: mistakes + 1)
       reset_box if mistakes == 3
-      flash = false
     end
 
     change_review_date
 
-    flash
+    result
   end
 
   protected
