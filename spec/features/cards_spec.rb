@@ -32,11 +32,8 @@ feature "Cards" do
     fill_in "Translated text", with: "Translated"
     click_on "Create Card"
 
-    date = (Date.today + 3.days).strftime("%d/%m/%Y")
-
     expect(page).to have_content("Original text: Original")
     expect(page).to have_content("Translated text: Translated")
-    expect(page).to have_content("Review date: " + date)
   end
 
   scenario "user can edit cards" do

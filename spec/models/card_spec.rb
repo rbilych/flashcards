@@ -1,59 +1,71 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Card do
-  context 'validation' do
-    it 'has valid factory' do
+  context "validation" do
+    it "has valid factory" do
       expect(build(:card)).to be_valid
     end
 
-    it 'is invalid without original text' do
-      card = build(:card, original_text: '')
+    it "is invalid without original text" do
+      card = build(:card, original_text: "")
 
       expect(card).to_not be_valid
     end
 
-    it 'is invalid without translated text' do
-      card = build(:card, translated_text: '')
+    it "is invalid without translated text" do
+      card = build(:card, translated_text: "")
 
       expect(card).to_not be_valid
     end
 
-    it 'is invalid with same texts' do
-      card = build(:card, translated_text: 'Original')
+    it "is invalid with same texts" do
+      card = build(:card, translated_text: "Original")
 
       expect(card).to_not be_valid
     end
 
-    it 'is invalid with same texts and with strange argument' do
-      card = build(:card, translated_text: ' oriGinAl  ')
+    it "is invalid with same texts and with strange argument" do
+      card = build(:card, translated_text: " oriGinAl  ")
 
       expect(card).to_not be_valid
     end
   end
 
-  it 'change review date on create' do
-    card = build(:card, review_date: nil)
-    card.save
+  context "check answer" do
+    let!(:card) { create(:card) }
 
-    expect(card.review_date).to eq (Date.today + 3.days)
-  end
+    it "change box if correct answer" do
+      t = [12.hour, 3.days, 1.week, 2.weeks, 1.month]
 
-  context 'check answer' do
-    let(:card) { build(:card) }
+      5.times do |i|
+        time = (Time.now + t[i]).utc.beginning_of_hour
 
-    it 'add +3 days and returnt true' do
-      expect(card.check_answer("Original")).to be true
-      expect(card.review_date).to eq (Date.today + 3.days)
+        card.check_answer("Original")
+
+        expect(card.box).to eq i+1
+        expect(card.mistakes).to eq 0
+        expect(card.review_date.beginning_of_hour).to eq time
+      end
     end
 
-    it 'add +3 days and returnt true with strange argument' do
-      expect(card.check_answer(" oriGinAl  ")).to be true
-      expect(card.review_date).to eq (Date.today + 3.days)
+    it "don't change box if box == 5" do
+      time = (Time.now + 1.month).utc.beginning_of_hour
+      card.box = 5
+
+      card.check_answer("Original")
+
+      expect(card.box).to eq 5
+      expect(card.review_date.beginning_of_hour).to eq time
     end
 
-    it 'dont change date and returns false' do
-      expect(card.check_answer("foo")).to be false
-      expect(card.review_date).to eq Date.today
+    it "reset box if 3 times incorrect answer" do
+      time = (Time.now + 12.hours).utc.beginning_of_hour
+
+      3.times { card.check_answer("Incorrect") }
+
+      expect(card.box).to eq 1
+      expect(card.mistakes).to eq 0
+      expect(card.review_date.beginning_of_hour).to eq time
     end
   end
 end

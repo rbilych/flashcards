@@ -10,7 +10,6 @@
   <% end %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
-  <%= f.input :review_date,
-              default: ((Date.today + 3.days) if card.new_record?) %>
+  <%= f.input :review_date %>
   <%= f.button :submit %>
 <% end %>
