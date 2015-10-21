@@ -35,10 +35,8 @@ describe Card do
     let!(:card) { create(:card) }
 
     it "change box if correct answer" do
-      t = [12.hour, 3.days, 1.week, 2.weeks, 1.month]
-
       5.times do |i|
-        time = (Time.now.getlocal + t[i]).utc.beginning_of_hour
+        time = (Time.now.getlocal + Card::TIME[i]).utc.beginning_of_hour
 
         card.check_answer("Original")
 

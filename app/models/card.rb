@@ -1,4 +1,6 @@
 class Card < ActiveRecord::Base
+  TIME = [12.hours, 3.days, 1.week, 2.weeks, 1.month]
+
   belongs_to :deck
 
   validates :original_text,
@@ -39,20 +41,7 @@ class Card < ActiveRecord::Base
   end
 
   def change_review_date
-    case box
-    when 1
-      time = 12.hours
-    when 2
-      time = 3.days
-    when 3
-      time = 1.week
-    when 4
-      time = 2.weeks
-    when 5
-      time = 1.month
-    end
-
-    update(review_date: Time.now.getlocal + time)
+    update(review_date: Time.now.getlocal + TIME[box - 1])
   end
 
   def text_fields_not_same
