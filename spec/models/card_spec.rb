@@ -38,18 +38,18 @@ describe Card do
       t = [12.hour, 3.days, 1.week, 2.weeks, 1.month]
 
       5.times do |i|
-        time = (Time.now + t[i]).utc.beginning_of_hour
+        time = (Time.now.getlocal + t[i]).utc.beginning_of_hour
 
         card.check_answer("Original")
 
-        expect(card.box).to eq i+1
+        expect(card.box).to eq i + 1
         expect(card.mistakes).to eq 0
         expect(card.review_date.beginning_of_hour).to eq time
       end
     end
 
     it "don't change box if box == 5" do
-      time = (Time.now + 1.month).utc.beginning_of_hour
+      time = (Time.now.getlocal + 1.month).utc.beginning_of_hour
       card.box = 5
 
       card.check_answer("Original")
@@ -59,7 +59,7 @@ describe Card do
     end
 
     it "reset box if 3 times incorrect answer" do
-      time = (Time.now + 12.hours).utc.beginning_of_hour
+      time = (Time.now.getlocal + 12.hours).utc.beginning_of_hour
 
       3.times { card.check_answer("Incorrect") }
 
