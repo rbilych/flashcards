@@ -19,7 +19,7 @@ class Card < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def check_answer(answer)
-    if(result = prepare_string(answer) == prepare_string(original_text))
+    if (result = prepare_string(answer) == prepare_string(original_text))
       change_box
     else
       update(mistakes: mistakes + 1)
