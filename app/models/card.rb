@@ -21,24 +21,26 @@ class Card < ActiveRecord::Base
   def check_answer(answer)
     if prepare_string(answer) == prepare_string(original_text)
       change_box
-      true
+      flash = true
     else
       update(mistakes: mistakes + 1)
       reset_box if mistakes == 3
-      false
+      flash = false
     end
+
+    change_review_date
+
+    flash
   end
 
   protected
 
   def change_box
     update(box: box + 1, mistakes: 0) if box < 5
-    change_review_date
   end
 
   def reset_box
     update(box: 1, mistakes: 0)
-    change_review_date
   end
 
   def change_review_date
