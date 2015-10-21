@@ -9,8 +9,8 @@ class Card < ActiveRecord::Base
 
   validate :text_fields_not_same
 
-  scope :for_review, -> { where("review_date <= ?", Time.now.getlocal)
-                          .order("RANDOM()") }
+  scope :for_review, lambda { where("review_date <= ?", Time.now.getlocal).
+                              order("RANDOM()") }
 
   has_attached_file :image, styles: { original: "360x360#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
