@@ -19,23 +19,24 @@ class Card < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def check_answer(answer)
-    if (result = check_typo(answer, original_text)) <= 2
-      return result if result > 0
+    if (result = prepare_string(answer) == prepare_string(original_text))
       change_box
     else
+      typos = typos_count(answer, original_text)
+      return { result: false, typos: true } if typos <= 2
+
       update(mistakes: mistakes + 1)
       reset_box if mistakes == 3
-      result = -1
     end
 
     change_review_date
 
-    result
+    { result: result, typos: false }
   end
 
   protected
 
-  def check_typo(answer, original_text)
+  def typos_count(answer, original_text)
     DamerauLevenshtein.distance(prepare_string(answer),
                                 prepare_string(original_text), 0)
   end

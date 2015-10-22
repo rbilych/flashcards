@@ -16,9 +16,9 @@ class ReviewsController < ApplicationController
 
     answer = @card.check_answer(review_params[:answer])
 
-    if answer == 0
+    if answer[:result]
       flash[:notice] = "Good"
-    elsif answer > 0
+    elsif answer[:typos]
       flash[:alert] = "<strong>Typing error!</strong><br>
                        You type: <i>#{review_params[:answer]}</i>,
                        but must be: <i>#{@card.original_text}</i>"
