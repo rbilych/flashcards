@@ -20,16 +20,16 @@ class Card < ActiveRecord::Base
 
   def check_answer(answer)
     if (result = prepare_string(answer) == prepare_string(original_text))
-      b = box < 5 ? box + 1 : box
+      current_box = box < 5 ? box + 1 : box
     else
       typos = typos_count(answer, original_text)
       return { result: false, typos: true } if typos <= 2
 
       update(mistakes: mistakes + 1)
-      b = mistakes == 3 ? 1 : false
+      current_box = mistakes == 3 ? 1 : false
     end
 
-    change_review_date(b)
+    change_review_date(current_box)
 
     { result: result, typos: false }
   end
@@ -41,10 +41,10 @@ class Card < ActiveRecord::Base
                                 prepare_string(original_text), 0)
   end
 
-  def change_review_date(b)
-    if b
-      time = Time.now.getlocal + TIME[b - 1]
-      update(box: b, mistakes: 0, review_date: time)
+  def change_review_date(current_box)
+    if current_box
+      time = Time.now.getlocal + TIME[current_box - 1]
+      update(box: current_box, mistakes: 0, review_date: time)
     end
   end
 
