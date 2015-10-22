@@ -16,6 +16,7 @@ gem 'sorcery', '~> 0.9.1'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'puma'
+gem 'damerau-levenshtein', '~> 1.1'
 
 group :development, :test do
   gem 'byebug'

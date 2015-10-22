@@ -19,11 +19,13 @@ class Card < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def check_answer(answer)
-    if (result = prepare_string(answer) == prepare_string(original_text))
+    if (result = check_typo(answer, original_text)) <= 2
+      return result if result > 0
       change_box
     else
       update(mistakes: mistakes + 1)
       reset_box if mistakes == 3
+      result = -1
     end
 
     change_review_date
@@ -32,6 +34,11 @@ class Card < ActiveRecord::Base
   end
 
   protected
+
+  def check_typo(answer, original_text)
+    DamerauLevenshtein.distance(prepare_string(answer),
+                                prepare_string(original_text), 0)
+  end
 
   def change_box
     update(box: box + 1, mistakes: 0) if box < 5
