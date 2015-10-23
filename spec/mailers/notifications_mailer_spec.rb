@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe NotificationsMailer do
   context "send pending cards notify" do
-    let!(:user) { create (:user) }
+    let!(:user) { create(:user) }
     let!(:deck) { create(:deck, user_id: user.id) }
 
     it "can send email" do
