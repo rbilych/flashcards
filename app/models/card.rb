@@ -36,7 +36,7 @@ class Card < ActiveRecord::Base
 
   def self.send_notify
     User.all.each do |user|
-      if user.cards.for_review.count && user.email > 0
+      if user.cards.for_review.count > 0 && user.email
         NotificationsMailer.pending_cards(user).deliver_now
       end
     end
