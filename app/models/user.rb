@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   belongs_to :current_deck, class_name: "Deck", foreign_key: "current_deck_id"
 
   def self.send_pending_cards_notify
-    where.not(email: nil).find_each do |user|
+    where.not(email: nil).includes(:cards).each do |user|
       if user.cards.for_review.count > 0
         NotificationsMailer.pending_cards(user).deliver_later
       end
