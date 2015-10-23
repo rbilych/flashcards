@@ -14,8 +14,14 @@ class ReviewsController < ApplicationController
   def create
     @card = Card.find(review_params[:card_id])
 
-    if @card.check_answer(review_params[:answer])
+    answer = @card.check_answer(review_params[:answer])
+
+    if answer[:result]
       flash[:notice] = "Good"
+    elsif answer[:typos]
+      flash[:alert] = "<strong>Typing error!</strong><br>
+                       You type: <i>#{review_params[:answer]}</i>,
+                       but must be: <i>#{@card.original_text}</i>"
     else
       flash[:alert] = "Bad"
     end

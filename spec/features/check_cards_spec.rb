@@ -52,4 +52,12 @@ feature "check cards" do
 
     expect(page).to have_content("Bad")
   end
+
+  scenario "user make typo" do
+    fill_in "Answer", with: "ariginal"
+    click_on "Check"
+
+    expect(page).to have_content("Typing error! You type: ariginal,
+                                  but must be: #{card.original_text}")
+  end
 end

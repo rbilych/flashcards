@@ -20,29 +20,32 @@ class Card < ActiveRecord::Base
 
   def check_answer(answer)
     if (result = prepare_string(answer) == prepare_string(original_text))
-      change_box
+      current_box = box < 5 ? box + 1 : box
     else
+      typos = typos_count(answer, original_text)
+      return { result: false, typos: true } if typos <= 2
+
       update(mistakes: mistakes + 1)
-      reset_box if mistakes == 3
+      current_box = mistakes == 3 ? 1 : false
     end
 
-    change_review_date
+    change_review_date(current_box)
 
-    result
+    { result: result, typos: false }
   end
 
   protected
 
-  def change_box
-    update(box: box + 1, mistakes: 0) if box < 5
+  def typos_count(answer, original_text)
+    DamerauLevenshtein.distance(prepare_string(answer),
+                                prepare_string(original_text), 0)
   end
 
-  def reset_box
-    update(box: 1, mistakes: 0)
-  end
-
-  def change_review_date
-    update(review_date: Time.now.getlocal + TIME[box - 1])
+  def change_review_date(current_box)
+    if current_box
+      time = Time.now.getlocal + TIME[current_box - 1]
+      update(box: current_box, mistakes: 0, review_date: time)
+    end
   end
 
   def text_fields_not_same
