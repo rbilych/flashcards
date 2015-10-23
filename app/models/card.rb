@@ -34,14 +34,6 @@ class Card < ActiveRecord::Base
     { result: result, typos: false }
   end
 
-  def self.send_notify
-    User.all.find_each do |user|
-      if user.cards.for_review.count > 0 && user.email
-        NotificationsMailer.pending_cards(user).deliver_now
-      end
-    end
-  end
-
   protected
 
   def typos_count(answer, original_text)

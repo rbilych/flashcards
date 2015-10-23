@@ -1,3 +1,3 @@
 every :day, at: "9am" do
-  runner "Card.send_notify"
+  runner "User.send_pending_cards_notify"
 end
