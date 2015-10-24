@@ -17,6 +17,7 @@ gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
 gem 'puma'
 gem 'damerau-levenshtein', '~> 1.1'
+gem 'whenever', require: false
 
 group :development, :test do
   gem 'byebug'
