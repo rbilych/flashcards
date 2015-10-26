@@ -18,6 +18,7 @@ gem 'aws-sdk', '< 2.0'
 gem 'puma'
 gem 'damerau-levenshtein', '~> 1.1'
 gem 'whenever', require: false
+gem 'http_accept_language', '~> 2.0', '>= 2.0.5'
 
 group :development, :test do
   gem 'byebug'
