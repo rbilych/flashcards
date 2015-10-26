@@ -5,6 +5,7 @@ en:
         email: "Email"
         password: "Password"
         password_confirmation: "Confirm Password"
+        locale: "Language"
       card:
         original_text: "Original text"
         translated_text: "Translated text"
