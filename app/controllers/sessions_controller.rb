@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
              session_params[:password],
              session_params[:remember_me])
 
-      flash[:notice] = 'Welcome back!'
+      flash[:notice] = t ".notice"
       redirect_back_or_to root_path
     else
-      flash[:alert] = 'Email and/or password is incorrect'
+      flash[:alert] = t ".alert"
       render :new
     end
   end
@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   def destroy
     logout
 
-    flash[:notice] = 'See you!'
+    flash[:notice] = t ".notice"
     redirect_to log_in_path
   end
 

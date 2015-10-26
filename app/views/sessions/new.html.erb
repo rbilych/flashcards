@@ -1,6 +1,6 @@
-<h1>Log in</h1>
+<h1><%= t(".title") %></h1>
 
-<%= link_to "Login with Twitter", auth_at_provider_path(provider: :twitter) %>
+<%= link_to t(".login"), auth_at_provider_path(provider: :twitter) %>
 
 <%= simple_form_for(:session,
                     url: sessions_path,
@@ -9,5 +9,5 @@
   <%= f.input :email %>
   <%= f.input :password %>
   <%= f.input :remember_me, as: :boolean %>
-  <%= f.submit 'Log in' %>
+  <%= f.submit t(".submit") %>
 <% end %>

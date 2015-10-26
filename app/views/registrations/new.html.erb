@@ -1,8 +1,8 @@
-<h1>Registration</h1>
+<h1><%= t(".title") %></h1>
 
 <%= simple_form_for(:registration, url: registrations_path) do |f| %>
   <%= f.input :email %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-  <%= f.submit "Create Account"%>
+  <%= f.submit t(".submit") %>
 <% end %>

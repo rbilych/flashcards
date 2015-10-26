@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
 
     if @user.save
       login(registration_params[:email], registration_params[:password])
-      flash[:notice] = "Welcome!"
+      flash[:notice] = t ".notice"
       redirect_to root_path
     else
       render :new
@@ -20,6 +20,8 @@ class RegistrationsController < ApplicationController
   private
 
   def registration_params
-    params.require(:registration).permit(:email, :password, :password_confirmation)
+    params.require(:registration).permit(:email,
+                                         :password,
+                                         :password_confirmation)
   end
 end

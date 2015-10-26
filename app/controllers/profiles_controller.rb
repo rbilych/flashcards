@@ -4,9 +4,9 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.update(profile_params)
-      flash[:notice] = "Updated"
+      flash[:notice] = t ".notice"
     else
-      flash[:alert] = "Not updated"
+      flash[:alert] = t ".alert"
     end
 
     render :edit

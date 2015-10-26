@@ -1,8 +1,18 @@
-<p>Original text: <strong><%= @card.original_text %></strong></p>
-<p>Translated text: <strong><%= @card.translated_text %></strong></p>
-<p>Review date: <strong><%= @card.review_date.strftime("%d/%m/%Y") %></strong></p>
 <p>
-  <%= link_to "Edit", edit_card_path(@card) %>
-  <%= link_to "Delete", card_path(@card), method: :delete,
-                        data: { confirm: "Are you sure?" } %>
+  <%= t("cards.labels.original") %>:
+  <strong><%= @card.original_text %></strong>
+</p>
+<p>
+  <%= t("cards.labels.translated") %>:
+  <strong><%= @card.translated_text %></strong>
+</p>
+<p>
+  <%= t("cards.labels.date") %>:
+  <strong><%= @card.review_date.strftime("%d/%m/%Y") %></strong>
+</p>
+
+<p>
+  <%= link_to t("buttons.edit"), edit_card_path(@card) %>
+  <%= link_to t("buttons.delete"), card_path(@card), method: :delete,
+    data: { confirm: t("buttons.delete_confirm") } %>
 </p>

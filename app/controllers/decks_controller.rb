@@ -15,7 +15,7 @@ class DecksController < ApplicationController
     @deck = current_user.decks.build(deck_params)
 
     if @deck.save
-      flash[:notice] = "Deck added"
+      flash[:notice] = t(".notice")
     else
       flash[:alert] = @deck.errors.full_messages.to_sentence
     end
@@ -28,7 +28,7 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update(deck_params)
-      flash[:notice] = "Deck udated"
+      flash[:notice] = t(".notice")
       redirect_to decks_path
     else
       flash[:alert] = @deck.errors.full_messages.to_sentence
@@ -43,7 +43,7 @@ class DecksController < ApplicationController
 
   def set_current
     if current_user.update_attributes(current_deck_id: deck_params[:deck_id])
-      flash[:notice] = "Current deck was changed"
+      flash[:notice] = t(".notice")
     end
     redirect_to decks_path
   end

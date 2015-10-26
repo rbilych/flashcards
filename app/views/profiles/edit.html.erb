@@ -1,4 +1,4 @@
-<h1>Edit Profile</h1>
+<h1><%= t(".title") %></h1>
 <h3><%= current_user.email %></h3>
 <hr>
 
@@ -6,5 +6,5 @@
   <%= f.input :email %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-  <%= f.submit "Update User"%>
+  <%= f.submit t(".submit") %>
 <% end %>

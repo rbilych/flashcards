@@ -1,9 +1,9 @@
 class NotificationsMailer < ApplicationMailer
   def pending_cards(user)
     @cards_count = user.cards.for_review.count
-    @cards = "card".pluralize(@cards_count)
+    @cards = t("email.card", count: @cards_count)
 
     mail(to: user.email,
-         subject: "You have #{@cards_count} #{@cards} for review")
+         subject: default_i18n_subject(count: @cards_count, cards: @cards))
   end
 end

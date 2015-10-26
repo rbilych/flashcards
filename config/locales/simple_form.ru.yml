@@ -1,0 +1,21 @@
+ru:
+  simple_form:
+    required:
+      text: "Поле обязательное"
+    labels:
+      defaults:
+        email: "Почта"
+        password: "Пароль"
+        password_confirmation: "Подтвердить пароль"
+      card:
+        original_text: "Оригинал"
+        translated_text: "Перевод"
+        image: "Изображение"
+        deck_id: "Колода"
+        review_date: "Дата"
+      review:
+        answer: "Ответ"
+      deck:
+        title: "Имя новой колоды"
+      session:
+        remember_me: "Запомнить меня"
