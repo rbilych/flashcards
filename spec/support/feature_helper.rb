@@ -4,7 +4,7 @@ module FeatureHelper
 
     fill_in "Email", with: email
     fill_in "Password", with: password
-    click_on "Log in"
+    click_button "Log In"
   end
 
   def signup(email, password)
@@ -15,7 +15,8 @@ module FeatureHelper
     end
     fill_in "Email", with: email
     fill_in "Password", with: password, match: :prefer_exact
-    fill_in "Password confirmation", with: password
+    fill_in "Confirm Password", with: password
+    find("#registration_locale").set("en")
     click_on "Create Account"
   end
 end

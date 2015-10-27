@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Cards" do
-  let!(:user) { create(:user, email: "some@user.com", password: "123456") }
+  let!(:user) { create(:user, email: "some@user.com", password: "123456", locale: "en") }
   let!(:deck) { create(:deck, user_id: user.id) }
 
   before(:each) do
@@ -27,7 +27,7 @@ feature "Cards" do
   end
 
   scenario "user can create cards" do
-    click_on "Добавить карточку"
+    click_on "Add new card"
     fill_in "Original text", with: "Original"
     fill_in "Translated text", with: "Translated"
     click_on "Create Card"
@@ -59,7 +59,7 @@ feature "Cards" do
   scenario "user can create deck from new card form" do
     visit new_card_path
 
-    fill_in "Имя новой колоды", with: "New Deck"
+    fill_in "New deck name", with: "New Deck"
     fill_in "Original text", with: "Original"
     fill_in "Translated text", with: "Translated"
     click_on "Create Card"

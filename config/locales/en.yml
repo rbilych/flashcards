@@ -29,7 +29,7 @@ en:
       submit: "Log In"
     create:
       notice: "Welcome back!"
-      alert: "Email and/or password if incorrect"
+      alert: "Email and/or password is incorrect"
     destroy:
       notice: "See you!"
 

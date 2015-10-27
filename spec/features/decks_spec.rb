@@ -1,7 +1,7 @@
 require "rails_helper"
 
 feature "Decks" do
-  let!(:user) { create(:user, email: "some@user.com", password: "123456") }
+  let!(:user) { create(:user, email: "some@user.com", password: "123456", locale: "en") }
   let!(:deck) { create(:deck, user_id: user.id) }
 
   before(:each) do
@@ -12,7 +12,7 @@ feature "Decks" do
     visit decks_path
 
     click_on "Add new deck"
-    fill_in "Title", with: "My Deck"
+    fill_in "New deck name", with: "My Deck"
     click_on "Create Deck"
 
     expect(page).to have_content("My Deck")
@@ -22,7 +22,7 @@ feature "Decks" do
     visit decks_path
 
     click_on "Edit"
-    fill_in "Title", with: "New Deck"
+    fill_in "New deck name", with: "New Deck"
     click_on "Update Deck"
 
     expect(page).to have_content("New Deck")
