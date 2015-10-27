@@ -50,8 +50,7 @@ class Card < ActiveRecord::Base
 
   def text_fields_not_same
     if prepare_string(original_text) == prepare_string(translated_text)
-      errors.add(:original_text,
-                 "Оригинальный текст не должен быть равен переведенному")
+      errors.add(:original_text, I18n.t("cards.errors.same_fields"))
     end
   end
 

@@ -1,22 +1,22 @@
-<h1>All Decks</h1>
+<h1><%= t(".title") %></h1>
 
-<%= link_to "Add new deck", new_deck_path, class: "btn btn-primary" %>
+<%= link_to t(".add_button"), new_deck_path, class: "btn btn-primary" %>
 
 <% @decks.each do |deck| %>
   <h2>
     <%= link_to deck.title, deck_path(deck) %>
     (<%= deck.cards.count %>)
   </h2>
-  <p><%= link_to "Edit", edit_deck_path(deck) %>
-  <p><%= link_to "Delete", deck_path(deck), method: :delete,
-                 data: { confirm: "With deck will be delete all cards" } %>
+  <p><%= link_to t("buttons.edit"), edit_deck_path(deck) %>
+  <p><%= link_to t("buttons.delete"), deck_path(deck), method: :delete,
+                 data: { confirm: t(".delete_confirm") } %>
 
   <% if current_user.current_deck == deck %>
-    <p class="label label-primary">Current</p>
+    <p class="label label-primary"><%= t(".label") %></p>
   <% else %>
     <%= simple_form_for :deck, url: set_current_path do |f| %>
       <%= f.hidden_field :deck_id, value: deck.id %>
-      <%= f.submit "Make current" %>
+      <%= f.submit t(".current_button") %>
     <% end %>
   <% end %>
   <hr>

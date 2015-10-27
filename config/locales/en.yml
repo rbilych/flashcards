@@ -1,23 +1,103 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  menu:
+    signup: "Sign Up"
+    login: "Log In"
+    logout: "Log out"
+    decks: "All decks"
+    cards: "All cards"
+    new_card: "Add new card"
+    profile: "Edit profile"
+    language: "Language"
+
+  buttons:
+    show: "Show"
+    edit: "Edit"
+    delete: "Delete"
+    delete_confirm: "Are you sure?"
+
+  registrations:
+    new:
+      title: "Registration"
+      submit: "Create Account"
+    create:
+      notice: "Welcome!"
+
+  sessions:
+    new:
+      title: "Log In"
+      login: "Log in with Twitter"
+      submit: "Log In"
+    create:
+      notice: "Welcome back!"
+      alert: "Email and/or password is incorrect"
+    destroy:
+      notice: "See you!"
+
+  oauths:
+    callback:
+      notice: "Logged in from %{provider}!"
+      alert:  "Failed to login from %{provider}!"
+
+  profiles:
+    edit:
+      title: "Edit Profile"
+      submit: "Update Profile"
+    update:
+      notice: "Your profile was updated successfully!"
+      alert: "Your profile was not updated!"
+
+  cards:
+    edit:
+      title: "Edit Card"
+    new:
+      title: "Add New Card"
+    labels:
+      original: "Original text"
+      translated: "Translated text"
+      date: "Review date"
+    errors:
+      same_fields: "Texts can't be equal"
+
+  reviews:
+    welcome:
+      call_to_action: "The world's first user-friendly flash cards manager."
+      button: "Sign Up Now !"
+    review_card:
+      message: "No cards for review"
+      submit: "Check"
+    create:
+      correct: "Correct"
+      mistake: "Mistake"
+      typo: "<strong>Typing error!</strong><br>
+             You type: <i>%{answer}</i>.
+             Maybe you meant: <i>%{typo}</i>"
+
+  decks:
+    index:
+      title: "All Decks"
+      label: "Current"
+      add_button: "Add new deck"
+      current_button: "Make current"
+      delete_confirm: "With deck will be delete all related cards"
+    new:
+      title: "Add New Deck"
+    create:
+      notice: "Deck added"
+    edit:
+      title: "Edit Deck"
+    update:
+      notice: "Deck updated"
+    set_current:
+      notice: "Current deck was changed"
+
+  email:
+    greeting: "Hello!"
+    card:
+      one: "card"
+      other: "cards"
+
+  notifications_mailer:
+    pending_cards:
+      subject: "You have %{count} %{cards} for review"
+      html: "You have %{count} %{cards} for review"
+      text: "You have %{count} %{cards} for review"

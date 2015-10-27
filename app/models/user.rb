@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
     config.authentications_class = Authentication
   end
 
-  validates :email, presence: true
+  validates :email, :locale, presence: true
 
   with_options if: -> { new_record? || changes["password"] } do
     validates :password, length: { minimum: 6 }

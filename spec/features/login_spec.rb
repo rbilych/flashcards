@@ -1,7 +1,9 @@
 require "rails_helper"
 
 feature "Log in" do
-  let!(:user) { create(:user, email: "some@user.com", password: "123456") }
+  let!(:user) do
+    create(:user, email: "some@user.com", password: "123456", locale: "en")
+  end
 
   scenario "registered user try log in" do
     login("some@user.com", "123456")
@@ -16,7 +18,7 @@ feature "Log in" do
   scenario "user log out" do
     login("some@user.com", "123456")
 
-    click_on "Logout"
+    click_on "Log out"
 
     expect(page).to have_content("See you!")
   end

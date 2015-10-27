@@ -6,8 +6,8 @@
   <%= simple_form_for :review, url: answer_path do |f| %>
     <%= f.hidden_field :card_id, value: @card.id %>
     <%= f.input :answer, as: :string %>
-    <%= f.submit "Check" %>
+    <%= f.submit t(".submit") %>
   <% end %>
 <% else %>
-  <h1>Нет карточек для изучения</h1>
+  <h1><%= t(".message") %></h1>
 <% end %>

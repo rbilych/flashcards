@@ -1,1 +1,5 @@
-<p>You have <%= @cards_count %> <%= @cards %> for review</p>
+<p>
+  <%= t("notifications_mailer.pending_cards.html",
+        count: @cards_count,
+        cards: @cards) %>
+</p>

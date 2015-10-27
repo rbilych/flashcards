@@ -17,13 +17,13 @@ class ReviewsController < ApplicationController
     answer = @card.check_answer(review_params[:answer])
 
     if answer[:result]
-      flash[:notice] = "Good"
+      flash[:notice] = t ".correct"
     elsif answer[:typos]
-      flash[:alert] = "<strong>Typing error!</strong><br>
-                       You type: <i>#{review_params[:answer]}</i>,
-                       but must be: <i>#{@card.original_text}</i>"
+      flash[:alert] = t(".typo",
+                        answer: review_params[:answer],
+                        typo: @card.original_text)
     else
-      flash[:alert] = "Bad"
+      flash[:alert] = t ".mistake"
     end
 
     redirect_to root_path

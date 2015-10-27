@@ -6,10 +6,10 @@
   <%= f.input :image, as: :file %>
   <%= f.input :deck_id, collection: current_user.decks, include_blank: false, required: false %>
   <%= simple_fields_for :deck do |deck_form| %>
-    <%= deck_form.input :title, label: "Имя новой колоды", required: false %>
+    <%= deck_form.input :title, required: false %>
   <% end %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
   <%= f.input :review_date %>
-  <%= f.button :submit %>
+  <%= f.submit %>
 <% end %>

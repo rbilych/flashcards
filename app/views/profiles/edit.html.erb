@@ -1,10 +1,11 @@
-<h1>Edit Profile</h1>
-<h3><%= current_user.email %></h3>
+<h1><%= t(".title") %></h1>
 <hr>
 
 <%= simple_form_for(:profile, url: profile_path, method: :patch) do |f| %>
-  <%= f.input :email %>
+  <%= f.input :email, input_html: { value: current_user.email } %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
-  <%= f.submit "Update User"%>
+  <%= f.input :locale, collection: I18n.available_locales,
+    include_blank: false %>
+  <%= f.submit t(".submit") %>
 <% end %>
