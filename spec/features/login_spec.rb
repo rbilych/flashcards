@@ -1,8 +1,9 @@
 require "rails_helper"
 
 feature "Log in" do
-  let!(:user) { create(:user, email: "some@user.com",
-                       password: "123456", locale: "en") }
+  let!(:user) do
+    create(:user, email: "some@user.com", password: "123456", locale: "en")
+  end
 
   scenario "registered user try log in" do
     login("some@user.com", "123456")

@@ -1,8 +1,9 @@
 require "rails_helper"
 
 feature "Cards" do
-  let!(:user) { create(:user, email: "some@user.com",
-                       password: "123456", locale: "en") }
+  let!(:user) do
+    create(:user, email: "some@user.com", password: "123456", locale: "en")
+  end
   let!(:deck) { create(:deck, user_id: user.id) }
 
   before(:each) do
