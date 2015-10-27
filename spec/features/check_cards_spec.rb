@@ -1,8 +1,9 @@
 require "rails_helper"
 
 feature "check cards" do
-  let!(:user) { create(:user, email: "some@user.com",
-                       password: "123456", locale: "en") }
+  let!(:user) do
+    create(:user, email: "some@user.com", password: "123456", locale: "en")
+  end
   let!(:deck) { create(:deck, title: "Deck", user_id: user.id) }
   let!(:card) { create(:card, deck_id: deck.id) }
 
