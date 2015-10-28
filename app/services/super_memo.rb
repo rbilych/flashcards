@@ -31,7 +31,7 @@ class SuperMemo
 
   def set_factor(factor, quality)
     factor += (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
-    factor = [factor, 1.3].max
+    [factor, 1.3].max
   end
 
   def get_interval(iteration, factor)
