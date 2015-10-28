@@ -5,9 +5,12 @@
   <h1><%= @card.translated_text %></h1>
   <%= simple_form_for :review, url: answer_path do |f| %>
     <%= f.hidden_field :card_id, value: @card.id %>
+    <%= f.hidden_field :time, id: "time" %>
     <%= f.input :answer, as: :string %>
     <%= f.submit t(".submit") %>
   <% end %>
+  <%= javascript_include_tag "review_timer" %>
 <% else %>
   <h1><%= t(".message") %></h1>
 <% end %>
+

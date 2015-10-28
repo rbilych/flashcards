@@ -14,7 +14,7 @@ class ReviewsController < ApplicationController
   def create
     @card = Card.find(review_params[:card_id])
 
-    answer = @card.check_answer(review_params[:answer])
+    answer = @card.check_answer(review_params[:answer], review_params[:time])
 
     if answer[:result]
       flash[:notice] = t ".correct"
@@ -32,6 +32,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:card_id, :answer)
+    params.require(:review).permit(:card_id, :answer, :time)
   end
 end
