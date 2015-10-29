@@ -37,7 +37,7 @@ class Card < ActiveRecord::Base
 
   def typos_count(answer, original_text)
     typos = DamerauLevenshtein.distance(prepare_string(answer),
-                               prepare_string(original_text), 0)
+                                        prepare_string(original_text), 0)
     (1..2).include?(typos)
   end
 
