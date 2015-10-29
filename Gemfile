@@ -21,6 +21,7 @@ gem 'whenever', require: false
 gem 'http_accept_language', '~> 2.0', '>= 2.0.5'
 gem 'rollbar', '~> 2.4.0'
 gem 'oj', '~> 2.12.14'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'byebug'
