@@ -18,7 +18,7 @@ describe NotificationsMailer do
 
       email = ActionMailer::Base.deliveries.first
 
-      expect(email.from[0]).to eq ENV["EMAIL_FROM"]
+      expect(email.from[0]).to eq ENV["MAIL_FROM"]
       expect(email.to[0]).to eq user.email
       expect(email.subject).to eq "You have 1 card for review"
       expect(email).to have_text "Hello! You have 1 card for review"
