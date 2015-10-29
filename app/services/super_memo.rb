@@ -8,10 +8,10 @@ class SuperMemo
     @e_factor = e_factor
   end
 
-  def calculation
-    quality = get_quality(@time)
-    @e_factor = set_e_factor(@e_factor, quality)
-    @interval = get_interval(@iteration, @e_factor)
+  def call
+    quality = quality(@time)
+    @e_factor = e_factor(@e_factor, quality)
+    @interval = interval(@iteration, @e_factor)
     @iteration = quality < 3 ? 1 : @iteration + 1
 
     {
@@ -21,7 +21,7 @@ class SuperMemo
     }
   end
 
-  def get_quality(time)
+  def quality(time)
     case time.to_i
     when -1 then 0
     when 0..5 then 5
@@ -32,12 +32,12 @@ class SuperMemo
     end
   end
 
-  def set_e_factor(e_factor, quality)
+  def e_factor(e_factor, quality)
     e_factor += (0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02))
     [e_factor, 1.3].max
   end
 
-  def get_interval(iteration, e_factor)
+  def interval(iteration, e_factor)
     case iteration
     when 1 then 1
     when 2 then 6

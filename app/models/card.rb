@@ -21,9 +21,9 @@ class Card < ActiveRecord::Base
   def check_answer(answer, time)
     time = -1 unless result = compare_answer(answer, original_text)
 
-    unless typos = typos_count(answer, original_text)
+    unless typos = typos?(answer, original_text)
       super_memo = SuperMemo.new(time, iteration, e_factor)
-      change_review_date(super_memo.calculation)
+      change_review_date(super_memo.call)
     end
 
     { result: result, typos: typos }
@@ -35,7 +35,7 @@ class Card < ActiveRecord::Base
     prepare_string(answer) == prepare_string(original_text)
   end
 
-  def typos_count(answer, original_text)
+  def typos?(answer, original_text)
     typos = DamerauLevenshtein.distance(prepare_string(answer),
                                         prepare_string(original_text), 0)
     (1..2).include?(typos)
