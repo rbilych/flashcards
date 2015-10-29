@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151028150156) do
+ActiveRecord::Schema.define(version: 20151029072113) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20151028150156) do
     t.datetime "image_updated_at"
     t.integer  "deck_id"
     t.integer  "iteration",          default: 1
-    t.float    "factor",             default: 2.5
+    t.float    "e_factor",           default: 2.5
   end
 
   create_table "decks", force: :cascade do |t|

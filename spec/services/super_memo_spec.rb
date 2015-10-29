@@ -5,7 +5,7 @@ describe SuperMemo do
     it "first iteration" do
       supermemo = SuperMemo.new(1, 1, 2.5).calculation
 
-      expect(supermemo[:factor]).to eq 2.6
+      expect(supermemo[:e_factor]).to eq 2.6
       expect(supermemo[:interval]).to eq 1
       expect(supermemo[:iteration]).to eq 2
     end
@@ -13,7 +13,7 @@ describe SuperMemo do
     it "second iteration" do
       supermemo = SuperMemo.new(1, 2, 2.6).calculation
 
-      expect(supermemo[:factor]).to eq 2.7
+      expect(supermemo[:e_factor]).to eq 2.7
       expect(supermemo[:interval]).to eq 6
       expect(supermemo[:iteration]).to eq 3
     end
@@ -21,7 +21,7 @@ describe SuperMemo do
     it "third iteration with long time" do
       supermemo = SuperMemo.new(19, 3, 2.7).calculation
 
-      expect(supermemo[:factor]).to eq 2.4
+      expect(supermemo[:e_factor]).to eq 2.4
       expect(supermemo[:interval]).to eq 4.8
       expect(supermemo[:iteration]).to eq 1
     end
@@ -31,7 +31,7 @@ describe SuperMemo do
     it "first iteration" do
       supermemo = SuperMemo.new(-1, 1, 2.5).calculation
 
-      expect(supermemo[:factor]).to eq 1.7
+      expect(supermemo[:e_factor]).to eq 1.7
       expect(supermemo[:interval]).to eq 1
       expect(supermemo[:iteration]).to eq 1
     end
@@ -39,7 +39,7 @@ describe SuperMemo do
     it "fifth iteration" do
       supermemo = SuperMemo.new(-1, 5, 1.3).calculation
 
-      expect(supermemo[:factor]).to eq 1.3
+      expect(supermemo[:e_factor]).to eq 1.3
       expect(supermemo[:interval]).to eq 5.2
       expect(supermemo[:iteration]).to eq 1
     end

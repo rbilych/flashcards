@@ -25,10 +25,9 @@ class Card < ActiveRecord::Base
       return { result: false, typos: true } if typos <= 2
 
       time = -1
-      result = false
     end
 
-    super_memo = SuperMemo.new(time, iteration, factor)
+    super_memo = SuperMemo.new(time, iteration, e_factor)
 
     change_review_date(super_memo.calculation)
 
@@ -46,7 +45,7 @@ class Card < ActiveRecord::Base
     date = Time.now.getlocal + super_memo[:interval].days
 
     update(iteration: super_memo[:iteration],
-           factor: super_memo[:factor],
+           e_factor: super_memo[:e_factor],
            review_date: date)
   end
 
