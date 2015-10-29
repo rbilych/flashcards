@@ -18,34 +18,35 @@ class Card < ActiveRecord::Base
   has_attached_file :image, styles: { original: "360x360#" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  def check_answer(answer)
-    if (result = prepare_string(answer) == prepare_string(original_text))
-      current_box = box < 5 ? box + 1 : box
-    else
-      typos = typos_count(answer, original_text)
-      return { result: false, typos: true } if typos <= 2
+  def check_answer(answer, time)
+    time = -1 unless result = compare_answer(answer, original_text)
 
-      update(mistakes: mistakes + 1)
-      current_box = mistakes == 3 ? 1 : false
+    unless typos = typos?(answer, original_text)
+      super_memo = SuperMemo.new(time, iteration, e_factor)
+      change_review_date(super_memo.call)
     end
 
-    change_review_date(current_box)
-
-    { result: result, typos: false }
+    { result: result, typos: typos }
   end
 
   protected
 
-  def typos_count(answer, original_text)
-    DamerauLevenshtein.distance(prepare_string(answer),
-                                prepare_string(original_text), 0)
+  def compare_answer(answer, original_text)
+    prepare_string(answer) == prepare_string(original_text)
   end
 
-  def change_review_date(current_box)
-    if current_box
-      time = Time.now.getlocal + TIME[current_box - 1]
-      update(box: current_box, mistakes: 0, review_date: time)
-    end
+  def typos?(answer, original_text)
+    typos = DamerauLevenshtein.distance(prepare_string(answer),
+                                        prepare_string(original_text), 0)
+    (1..2).include?(typos)
+  end
+
+  def change_review_date(super_memo)
+    date = Time.now.getlocal + super_memo[:interval].days
+
+    update(iteration: super_memo[:iteration],
+           e_factor: super_memo[:e_factor],
+           review_date: date)
   end
 
   def text_fields_not_same
