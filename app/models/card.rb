@@ -19,26 +19,26 @@ class Card < ActiveRecord::Base
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   def check_answer(answer, time)
-    unless (result = prepare_string(answer) == prepare_string(original_text))
-      typos = typos_count(answer, original_text)
+    time = -1 unless result = compare_answer(answer, original_text)
 
-      return { result: false, typos: true } if typos <= 2
-
-      time = -1
+    unless typos = typos_count(answer, original_text)
+      super_memo = SuperMemo.new(time, iteration, e_factor)
+      change_review_date(super_memo.calculation)
     end
 
-    super_memo = SuperMemo.new(time, iteration, e_factor)
-
-    change_review_date(super_memo.calculation)
-
-    { result: result, typos: false }
+    { result: result, typos: typos }
   end
 
   protected
 
+  def compare_answer(answer, original_text)
+    prepare_string(answer) == prepare_string(original_text)
+  end
+
   def typos_count(answer, original_text)
-    DamerauLevenshtein.distance(prepare_string(answer),
-                                prepare_string(original_text), 0)
+    typos = DamerauLevenshtein.distance(prepare_string(answer),
+                               prepare_string(original_text), 0)
+    (1..2).include?(typos)
   end
 
   def change_review_date(super_memo)
