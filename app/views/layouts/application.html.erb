@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>Flashcards</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -46,11 +46,9 @@
   </nav>
 
   <div class="container">
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% elsif alert %>
-      <p class="alert alert-danger"><%= alert.html_safe %></p>
-    <% end %>
+    <div class="messages">
+      <%= render "layouts/messages" %>
+    </div>
 
     <%= yield %>
   </div>

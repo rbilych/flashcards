@@ -1,5 +1,7 @@
 <% if current_user %>
-  <%= render 'review_card' %>
+  <div class="review">
+    <%= render 'review_card' %>
+  </div>
 <% else %>
   <%= render 'welcome' %>
 <% end %>
