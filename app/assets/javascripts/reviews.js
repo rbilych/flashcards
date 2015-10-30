@@ -1,10 +1,14 @@
-$(function() {
+startTimer = function(){
   var time = 0;
 
-  setInterval(timer, 1000);
+  if (typeof timer !== "undefined") clearInterval(timer);
 
-  function timer() {
+  timer = setInterval(function() {
     time++;
     $("#time").val(time);
-  }
+  }, 1000);
+}
+
+$(function() {
+  startTimer();
 });
