@@ -1,4 +1,4 @@
-class DecksController < ApplicationController
+class Dashboard::DecksController < ApplicationController
   before_action :find_deck, only: [:show, :edit, :update, :destroy]
   def index
     @decks = current_user.decks

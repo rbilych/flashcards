@@ -1,22 +1,26 @@
 Rails.application.routes.draw do
-  root "reviews#new"
+  scope module: "home" do
+    resources :registrations, only: [:new, :create]
 
-  resources :cards
+    resources :sessions, only: [:new, :create, :destroy]
+    get "/log_in", to: "sessions#new", as: :log_in
+    delete "/log_out", to: "sessions#destroy", as: :log_out
 
-  resources :reviews, only: [:new, :create]
-  post "answer" => "reviews#create"
+    get "oauth/callback" => "oauths#callback"
+    get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
+  end
 
-  resources :registrations, only: [:new, :create]
+  scope module: "dashboard" do
+    root "reviews#new"
 
-  resources :profiles, only: [:edit, :update]
+    resources :cards
 
-  resources :sessions, only: [:new, :create, :destroy]
-  get "/log_in", to: "sessions#new", as: :log_in
-  delete "/log_out", to: "sessions#destroy", as: :log_out
+    resources :reviews, only: [:new, :create]
+    post "answer" => "reviews#create"
 
-  get "oauth/callback" => "oauths#callback"
-  get "oauth/:provider" => "oauths#oauth", as: :auth_at_provider
+    resources :profiles, only: [:edit, :update]
 
-  resources :decks
-  post "set_current" => "decks#set_current"
+    resources :decks
+    post "set_current" => "decks#set_current"
+  end
 end

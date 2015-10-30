@@ -1,15 +1,15 @@
 <% @cards.each do |card| %>
   <div class="card">
     <p>
-      <%= t("cards.labels.original") %>:
+      <%= t("dashboard.cards.labels.original") %>:
       <strong><%= card.original_text %></strong>
     </p>
     <p>
-      <%= t("cards.labels.translated") %>:
+      <%= t("dashboard.cards.labels.translated") %>:
       <strong><%= card.translated_text %></strong>
     </p>
     <p>
-      <%= t("cards.labels.date") %>:
+      <%= t("dashboard.cards.labels.date") %>:
       <strong><%= card.review_date.strftime("%d/%m/%Y") %></strong>
     </p>
     <p>

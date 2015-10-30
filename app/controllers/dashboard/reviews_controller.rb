@@ -1,4 +1,4 @@
-class ReviewsController < ApplicationController
+class Dashboard::ReviewsController < ApplicationController
   skip_before_action :require_login
 
   def new
