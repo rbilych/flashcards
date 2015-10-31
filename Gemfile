@@ -14,7 +14,6 @@ gem 'simple_form', '~> 3.2.0'
 gem 'sorcery', '~> 0.9.1'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
-gem 'puma'
 gem 'damerau-levenshtein', '~> 1.1'
 gem 'whenever', require: false
 gem 'http_accept_language', '~> 2.0', '>= 2.0.5'
