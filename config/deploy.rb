@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:rbilych/flashcards.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, '/home/ubuntu/flashcards'
+set :deploy_to, '/home/deploy/flashcards'
 
 set :linked_files, %w{config/database.yml}
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
