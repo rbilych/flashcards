@@ -37,6 +37,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'capistrano', '~> 3.4'
+  gem 'capistrano-rails', '~> 1.1', '>= 1.1.5'
 end
 
 group :production do
