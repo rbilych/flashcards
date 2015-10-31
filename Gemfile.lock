@@ -57,9 +57,9 @@ GEM
     capistrano-rails (1.1.5)
       capistrano (~> 3.1)
       capistrano-bundler (~> 1.1)
-    capistrano3-puma (1.2.1)
+    capistrano-rvm (0.1.2)
       capistrano (~> 3.0)
-      puma (>= 2.6)
+      sshkit (~> 1.2)
     capybara (2.5.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -87,9 +87,7 @@ GEM
     debug_inspector (0.0.2)
     diff-lcs (1.2.5)
     dotenv (2.0.2)
-    dotenv-rails (2.0.2)
-      dotenv (= 2.0.2)
-      railties (~> 4.0)
+    dotenv-deployment (0.0.2)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
@@ -112,6 +110,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.3)
     jwt (1.5.1)
+    libv8 (3.16.14.13)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -144,7 +143,6 @@ GEM
       mime-types
       mimemagic (= 0.3.0)
     pg (0.18.3)
-    puma (2.14.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -167,11 +165,6 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.2)
       loofah (~> 2.0)
-    rails_12factor (0.0.3)
-      rails_serve_static_assets
-      rails_stdout_logging
-    rails_serve_static_assets (0.0.4)
-    rails_stdout_logging (0.0.4)
     railties (4.2.4)
       actionpack (= 4.2.4)
       activesupport (= 4.2.4)
@@ -181,6 +174,7 @@ GEM
     rake-compiler (0.9.5)
       rake
     rdoc (4.2.0)
+    ref (2.0.0)
     rollbar (2.4.0)
       multi_json
     rspec-core (3.3.2)
@@ -228,6 +222,9 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
@@ -252,14 +249,15 @@ PLATFORMS
 DEPENDENCIES
   aws-sdk (< 2.0)
   byebug
-  capistrano (~> 3.4)
-  capistrano-bundler (~> 1.1, >= 1.1.4)
-  capistrano-rails (~> 1.1, >= 1.1.5)
-  capistrano3-puma (~> 1.2, >= 1.2.1)
+  capistrano
+  capistrano-bundler
+  capistrano-rails
+  capistrano-rvm
   capybara (~> 2.5.0)
   coffee-rails (~> 4.1.0)
   damerau-levenshtein (~> 1.1)
-  dotenv-rails (~> 2.0.2)
+  dotenv
+  dotenv-deployment
   factory_girl_rails (~> 4.5.0)
   http_accept_language (~> 2.0, >= 2.0.5)
   jbuilder (~> 2.0)
@@ -268,9 +266,7 @@ DEPENDENCIES
   oj (~> 2.12.14)
   paperclip (~> 4.3)
   pg
-  puma
   rails (= 4.2.4)
-  rails_12factor
   rake (~> 10.4.2)
   rollbar (~> 2.4.0)
   rspec-rails (~> 3.3.3)
@@ -279,6 +275,7 @@ DEPENDENCIES
   simple_form (~> 3.2.0)
   sorcery (~> 0.9.1)
   spring
+  therubyracer
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
   whenever

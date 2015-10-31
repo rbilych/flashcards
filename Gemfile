@@ -20,14 +20,15 @@ gem 'http_accept_language', '~> 2.0', '>= 2.0.5'
 gem 'rollbar', '~> 2.4.0'
 gem 'oj', '~> 2.12.14'
 gem 'newrelic_rpm'
-gem 'puma'
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'capybara', '~> 2.5.0'
-  gem 'dotenv-rails', '~> 2.0.2'
 end
 
 group :test do
@@ -37,12 +38,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'capistrano', '~> 3.4'
-  gem 'capistrano3-puma', '~> 1.2', '>= 1.2.1'
-  gem 'capistrano-rails', '~> 1.1', '>= 1.1.5'
-  gem 'capistrano-bundler', '~> 1.1', '>= 1.1.4'
-end
-
-group :production do
-  gem 'rails_12factor'
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
 end
