@@ -29,80 +29,82 @@ ru:
     messages:
       blank: "Должно быть заполнено"
 
-  registrations:
-    new:
-      title: "Регистрация"
-      submit: "Создать аккаунт"
-    create:
-      notice: "Добро пожаловать!"
+  home:
+    registrations:
+      new:
+        title: "Регистрация"
+        submit: "Создать аккаунт"
+      create:
+        notice: "Добро пожаловать!"
 
-  sessions:
-    new:
-      title: "Войти"
-      login: "Войти используя Twitter"
-      submit: "Войти"
-    create:
-      notice: "С возвращением!"
-      alert: "Почта и/или пароль неверны"
-    destroy:
-      notice: "До свидания!"
+    sessions:
+      new:
+        title: "Войти"
+        login: "Войти используя Twitter"
+        submit: "Войти"
+      create:
+        notice: "С возвращением!"
+        alert: "Почта и/или пароль неверны"
+      destroy:
+        notice: "До свидания!"
 
-  oauths:
-    callback:
-      notice: "Вход выполнен через %{provider}!"
-      alert:  "Ошибка входа через %{provider}!"
+    oauths:
+      callback:
+        notice: "Вход выполнен через %{provider}!"
+        alert:  "Ошибка входа через %{provider}!"
 
-  profiles:
-    edit:
-      title: "Редактировать профиль"
-      submit: "Обновить профиль"
-    update:
-      notice: "Ваш профиль успешно обновлен!"
-      alert: "Ваш профиль небыл обновлен!"
+  dashboard:
+    profiles:
+      edit:
+        title: "Редактировать профиль"
+        submit: "Обновить профиль"
+      update:
+        notice: "Ваш профиль успешно обновлен!"
+        alert: "Ваш профиль небыл обновлен!"
 
-  cards:
-    edit:
-      title: "Редактировать карточку"
-    new:
-      title: "Добавить карточку"
-    labels:
-      original: "Оригинал"
-      translated: "Перевод"
-      date: "Дата пересмотра"
-    errors:
-      same_fields: "Оригинальный текст не должен быть равен переведенному"
+    cards:
+      edit:
+        title: "Редактировать карточку"
+      new:
+        title: "Добавить карточку"
+      labels:
+        original: "Оригинал"
+        translated: "Перевод"
+        date: "Дата пересмотра"
+      errors:
+        same_fields: "Оригинальный текст не должен быть равен переведенному"
 
-  reviews:
-    welcome:
-      call_to_action: "Первый в мире удобный менеджер флеш-карточек. Именно так."
-      button: "Присоединяйтесь!"
-    review_card:
-      message: "Нет карточек для изучения"
-      submit: "Проверить"
-    create:
-      correct: "Правильно!"
-      mistake: "Не правильно!"
-      typo: "<strong>Опечатка!</strong><br>
-             Вы набрали: <i>%{answer}</i>.
-             Возможно Вы имели в виду: <i>%{typo}</i>"
+    reviews:
+      welcome:
+        call_to_action: "Первый в мире удобный менеджер флеш-карточек. Именно так."
+        button: "Присоединяйтесь!"
+      review_card:
+        message: "Нет карточек для изучения"
+        submit: "Проверить"
+      create:
+        correct: "Правильно!"
+        mistake: "Не правильно!"
+        typo: "<strong>Опечатка!</strong><br>
+               Вы набрали: <i>%{answer}</i>.
+               Возможно Вы имели в виду: <i>%{typo}</i>"
 
-  decks:
-    index:
-      title: "Ваши колоды"
-      label: "Текущая"
-      add_button: "Добавить колоду"
-      current_button: "Назначить текущей"
-      delete_confirm: "С колодой будут удалены карточки!"
-    new:
-      title: "Добавить колоду"
-    create:
-      notice: "Колода добавлена"
-    edit:
-      title: "Редактировать колоду"
-    update:
-      notice: "Колода оновлена!"
-    set_current:
-      notice: "Текущая колода изменена"
+    decks:
+      index:
+        title: "Ваши колоды"
+        label: "Текущая"
+        add_button: "Добавить колоду"
+        current_button: "Назначить текущей"
+        delete_confirm: "С колодой будут удалены карточки!"
+      new:
+        title: "Добавить колоду"
+      create:
+        notice: "Колода добавлена"
+      edit:
+        title: "Редактировать колоду"
+      update:
+        notice: "Колода оновлена!"
+      set_current:
+        notice: "Текущая колода изменена"
 
   email:
     greeting: "Здравствуйте!"

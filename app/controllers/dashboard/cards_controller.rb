@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class Dashboard::CardsController < ApplicationController
   before_action :find_card, only: [:show, :edit, :update, :destroy]
 
   def index

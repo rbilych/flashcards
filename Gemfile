@@ -14,20 +14,21 @@ gem 'simple_form', '~> 3.2.0'
 gem 'sorcery', '~> 0.9.1'
 gem "paperclip", "~> 4.3"
 gem 'aws-sdk', '< 2.0'
-gem 'puma'
 gem 'damerau-levenshtein', '~> 1.1'
 gem 'whenever', require: false
 gem 'http_accept_language', '~> 2.0', '>= 2.0.5'
 gem 'rollbar', '~> 2.4.0'
 gem 'oj', '~> 2.12.14'
 gem 'newrelic_rpm'
+gem 'dotenv'
+gem 'dotenv-deployment', require: 'dotenv/deployment'
+gem 'therubyracer'
 
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.3.3'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'capybara', '~> 2.5.0'
-  gem 'dotenv-rails', '~> 2.0.2'
 end
 
 group :test do
@@ -37,8 +38,8 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-end
-
-group :production do
-  gem 'rails_12factor'
+  gem 'capistrano', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-rvm', require: false
 end
