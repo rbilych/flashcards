@@ -18,9 +18,9 @@ set :rails_env, :production
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{deploy@52.32.45.127}
-role :web, %w{deploy@52.32.45.127}
-role :db,  %w{deploy@52.32.45.127}
+role :app, %w{deploy@52.32.203.89}
+role :web, %w{deploy@52.32.203.89}
+role :db,  %w{deploy@52.32.203.89}
 
 
 
