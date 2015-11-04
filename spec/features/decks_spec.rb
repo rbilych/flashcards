@@ -53,5 +53,4 @@ feature "Decks" do
       visit deck_path(deck2)
     end.to raise_error(ActiveRecord::RecordNotFound)
   end
-
 end
