@@ -1,0 +1,22 @@
+uk:
+  simple_form:
+    required:
+      text: "Поле обовязкове"
+    labels:
+      defaults:
+        email: "Пошта"
+        password: "Пароль"
+        password_confirmation: "Підтвердити пароль"
+        locale: "Мова"
+      card:
+        original_text: "Оригінал"
+        translated_text: "Переклад"
+        image: "Зображення"
+        deck_id: "Колода"
+        review_date: "Дата"
+      review:
+        answer: "Відповідь"
+      deck:
+        title: "Назва нової колоди"
+      session:
+        remember_me: "Запамятати мене"
