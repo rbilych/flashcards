@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
+  <%= favicon_link_tag "favicon.ico" %>
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -33,6 +34,7 @@
               </a>
               <ul class="dropdown-menu">
                 <li><%= link_to "EN", locale: "en" %></li>
+                <li><%= link_to "UK", locale: "uk" %></li>
                 <li><%= link_to "RU", locale: "ru" %></li>
               </ul>
             </li>
@@ -55,7 +57,11 @@
   <div class="footer">
     <div class="container text-center">
       <p class="copyright">
-        <i class='fa fa-language'></i> Flashcard.tk &copy; 2015 |
+        <a href="http://flashcards.pp.ua">
+          <i class='fa fa-language'></i>
+          Flashcard.pp.ua
+        </a>
+        &copy; 2015 |
         Created by: <a href="http://rbilych.github.io">rbilych</a>
       </p>
     </div>

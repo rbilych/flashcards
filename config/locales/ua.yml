@@ -1,0 +1,173 @@
+uk:
+  helpers:
+    submit:
+      create: "Створити %{model}"
+      update: "Оновити %{model}"
+
+  activerecord:
+    models:
+      card: "Карточку"
+      deck: "Колодy"
+
+  menu:
+    signup: "Реєстрація"
+    login: "Вхід"
+    logout: "Вийти"
+    decks: "Колоди"
+    new_card: "Добавити карточку"
+    profile: "Змінити профіль"
+    language: "Мова"
+
+  buttons:
+    show: "Показати"
+    edit: "Змінити"
+    delete: "Видалити"
+    delete_confirm: "Ви впевнені?"
+
+  errors:
+    messages:
+      blank: "Повинно бути заповнено"
+
+  home:
+    registrations:
+      new:
+        title: "Реєстрація"
+        submit: "Створити аккаунт"
+      create:
+        notice: "Ласкаво просимо!"
+
+    sessions:
+      new:
+        title: "Увійти"
+        login: "Увійти через Twitter"
+        submit: "Увійти"
+      create:
+        notice: "З поверненням!"
+        alert: "Пошта і/або пароль невірні"
+      destroy:
+        notice: "До побачення!"
+
+    oauths:
+      callback:
+        notice: "Вхід виповнений через %{provider}!"
+        alert:  "Помилка входу через %{provider}!"
+
+  dashboard:
+    profiles:
+      edit:
+        title: "Редактувати профіль"
+        submit: "Оновити профіль"
+      update:
+        notice: "Ваш профіль успішно оновлено!"
+        alert: "Ваш профіль небув оновлений!"
+
+    cards:
+      edit:
+        title: "Редагувати карточку"
+      new:
+        title: "Добавити карточку"
+      labels:
+        original: "Оригінал"
+        translated: "Переклад"
+        date: "Дата перегляду"
+      errors:
+        same_fields: "Оригінальний текст не повинен бути таким як переклад"
+
+    reviews:
+      welcome:
+        call_to_action: "Перший в світі зручний менеджер флеш-карточок. Саме так."
+        button: "Приєднуйтесь!"
+      review_card:
+        message: "Нема карточок для перегляду"
+        submit: "Провірити"
+      create:
+        correct: "Правильно!"
+        mistake: "Не правильно!"
+        typo: "<strong>Опечатка!</strong><br>
+               Ви набрали: <i>%{answer}</i>.
+               Можливо Ви мали на увазі: <i>%{typo}</i>"
+
+    decks:
+      index:
+        title: "Ваші колоди"
+        label: "Поточна"
+        add_button: "Добавити колоду"
+        current_button: "Назначити поточною"
+        delete_confirm: "С колодою будуть видалені карточки!"
+      new:
+        title: "Добавити колоду"
+      create:
+        notice: "Колода добавлена"
+      edit:
+        title: "Редагувати колоду"
+      update:
+        notice: "Колода оновлена!"
+      set_current:
+        notice: "Поточна колода змінена"
+
+  email:
+    greeting: "Привіт!"
+    card:
+      one: "карточка"
+      few: "карточки"
+      other: "карточок"
+
+  notifications_mailer:
+    pending_cards:
+      subject: "У Вас %{count} %{cards} для перегляду"
+      html: "У Вас %{count} %{cards} для перегляду"
+      text: "У Вас %{count} %{cards} для перегляду"
+
+  date:
+    abbr_day_names:
+      - нд.
+      - пн.
+      - вт.
+      - ср.
+      - чт.
+      - пт.
+      - сб.
+    abbr_month_names:
+      -
+      - січ.
+      - лют.
+      - бер.
+      - квіт.
+      - трав.
+      - черв.
+      - лип.
+      - серп.
+      - вер.
+      - жовт.
+      - лист.
+      - груд.
+    day_names:
+      - неділя
+      - понеділок
+      - вівторок
+      - середа
+      - четвер
+      - п'ятниця
+      - субота
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d %b"
+    month_names:
+      -
+      - Січня
+      - Лютого
+      - Березня
+      - Квітня
+      - Травня
+      - Червня
+      - Липня
+      - Серпня
+      - Вересня
+      - Жовтня
+      - Листопада
+      - Грудня
+    order:
+      - :day
+      - :month
+      - :year

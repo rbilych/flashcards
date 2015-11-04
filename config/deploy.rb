@@ -4,6 +4,8 @@ lock '3.4.0'
 set :application, 'flashcards'
 set :repo_url, 'git@github.com:rbilych/flashcards.git'
 
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
+
 # Default branch is :master
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
