@@ -2,14 +2,16 @@
   <%= image_tag card.image.url %>
 <% end %>
 
-<%= simple_form_for(card, html: { class: 'form-horizontal' }) do |f| %>
+<%= simple_form_for(card) do |f| %>
   <%= f.input :image, as: :file %>
   <%= f.input :deck_id, collection: current_user.decks, include_blank: false, required: false %>
-  <%= simple_fields_for :deck do |deck_form| %>
-    <%= deck_form.input :title, required: false %>
+  <% if card.new_record? %>
+    <%= simple_fields_for :deck do |deck_form| %>
+      <%= deck_form.input :title, required: false %>
+    <% end %>
   <% end %>
   <%= f.input :original_text %>
   <%= f.input :translated_text %>
   <%= f.input :review_date %>
-  <%= f.submit %>
+  <%= f.submit nil, class: "btn btn-primary btn-lg" %>
 <% end %>

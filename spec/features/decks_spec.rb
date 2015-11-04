@@ -45,4 +45,12 @@ feature "Decks" do
 
     expect(page).to have_content("Current")
   end
+
+  scenario "user can't see other's decks" do
+    deck2 = create(:deck, user_id: 42)
+
+    expect do
+      visit deck_path(deck2)
+    end.to raise_error(ActiveRecord::RecordNotFound)
+  end
 end

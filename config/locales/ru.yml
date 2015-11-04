@@ -14,7 +14,6 @@ ru:
     login: "Вход"
     logout: "Вийти"
     decks: "Колоды"
-    cards: "Карточки"
     new_card: "Добавить карточку"
     profile: "Изменить профиль"
     language: "Язык"

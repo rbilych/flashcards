@@ -1,13 +1,15 @@
-<h1><%= t(".title") %></h1>
+<div class="col-md-6 col-md-offset-3">
+  <h1><%= t(".title") %></h1>
+  <hr>
 
-<%= link_to t(".login"), auth_at_provider_path(provider: :twitter) %>
+  <%= link_to "<i class='fa fa-twitter'></i> #{t('.login')}".html_safe, auth_at_provider_path(provider: :twitter), class: "btn btn-primary btn-lg btn-block" %>
 
-<%= simple_form_for(:session,
-                    url: sessions_path,
-                    html: { class: 'form-horizontal' }) do |f| %>
+  <hr>
 
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :remember_me, as: :boolean %>
-  <%= f.submit t(".submit") %>
-<% end %>
+  <%= simple_form_for(:session, url: sessions_path) do |f| %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :remember_me, as: :boolean %>
+    <%= f.submit t(".submit"), class: "btn btn-primary btn-lg btn-block" %>
+  <% end %>
+</div>

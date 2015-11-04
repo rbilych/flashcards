@@ -23,6 +23,7 @@ gem 'newrelic_rpm'
 gem 'dotenv'
 gem 'dotenv-deployment', require: 'dotenv/deployment'
 gem 'therubyracer'
+gem 'font-awesome-rails', '~> 4.4'
 
 group :development, :test do
   gem 'byebug'

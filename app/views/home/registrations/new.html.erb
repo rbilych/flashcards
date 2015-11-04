@@ -1,9 +1,11 @@
-<h1><%= t(".title") %></h1>
-
-<%= simple_form_for(:registration, url: registrations_path) do |f| %>
-  <%= f.hidden_field :locale, value: session[:locale] %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.submit t(".submit") %>
-<% end %>
+<div class="col-md-6 col-md-offset-3">
+  <h1><%= t(".title") %></h1>
+  <hr>
+  <%= simple_form_for(:registration, url: registrations_path) do |f| %>
+    <%= f.hidden_field :locale, value: session[:locale] %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.submit t(".submit"), class: "btn btn-primary btn-lg btn-block" %>
+  <% end %>
+</div>

@@ -19,15 +19,6 @@ feature "Cards" do
     expect(page).to_not have_css(".card")
   end
 
-  scenario "user can't see other cards" do
-    deck2 = create(:deck, user_id: 42)
-    card = create(:card, deck_id: deck2.id)
-
-    expect do
-      visit card_path(card)
-    end.to raise_error(ActiveRecord::RecordNotFound)
-  end
-
   scenario "user can create cards" do
     click_on "Add new card"
     fill_in "Original text", with: "Original"

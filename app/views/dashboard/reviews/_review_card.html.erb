@@ -1,14 +1,18 @@
-<% if @card %>
-  <% if @card.image.exists? %>
-    <%= image_tag @card.image.url %>
-  <% end %>
-  <h1><%= @card.translated_text %></h1>
-  <%= simple_form_for :review, url: answer_path, remote: true do |f| %>
-    <%= f.hidden_field :card_id, value: @card.id %>
-    <%= f.hidden_field :time, id: "time" %>
-    <%= f.input :answer, as: :string %>
-    <%= f.submit t(".submit") %>
-  <% end %>
-<% else %>
-  <h1><%= t(".message") %></h1>
-<% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2 text-center">
+    <% if @card %>
+      <% if @card.image.exists? %>
+        <%= image_tag @card.image.url %>
+      <% end %>
+      <h1><%= @card.translated_text %></h1>
+      <%= simple_form_for :review, url: answer_path, remote: true do |f| %>
+        <%= f.hidden_field :card_id, value: @card.id %>
+        <%= f.hidden_field :time, id: "time" %>
+        <%= f.input :answer, as: :string %>
+        <%= f.submit t(".submit"), class: "btn btn-success btn-lg btn-block" %>
+      <% end %>
+    <% else %>
+      <h1><%= t(".message") %></h1>
+    <% end %>
+  </div>
+</div>

@@ -4,7 +4,6 @@ en:
     login: "Log In"
     logout: "Log out"
     decks: "All decks"
-    cards: "All cards"
     new_card: "Add new card"
     profile: "Edit profile"
     language: "Language"

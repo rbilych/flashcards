@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   scope module: "dashboard" do
     root "reviews#new"
 
-    resources :cards
+    resources :cards, except: :show
 
     resources :reviews, only: [:new, :create]
     post "answer" => "reviews#create"

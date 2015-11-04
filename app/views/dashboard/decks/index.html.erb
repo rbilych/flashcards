@@ -1,23 +1,33 @@
 <h1><%= t(".title") %></h1>
 
 <%= link_to t(".add_button"), new_deck_path, class: "btn btn-primary" %>
+<hr>
 
-<% @decks.each do |deck| %>
-  <h2>
-    <%= link_to deck.title, deck_path(deck) %>
-    (<%= deck.cards.count %>)
-  </h2>
-  <p><%= link_to t("buttons.edit"), edit_deck_path(deck) %>
-  <p><%= link_to t("buttons.delete"), deck_path(deck), method: :delete,
-                 data: { confirm: t(".delete_confirm") } %>
+<div class="row">
+  <% @decks.each do |deck| %>
+    <div class="col-md-4">
+      <div class="well text-center">
+        <h3>
+          <%= link_to deck.title, deck_path(deck) %>
+          (<%= deck.cards.count %>)
+        </h3>
 
-  <% if current_user.current_deck == deck %>
-    <p class="label label-primary"><%= t(".label") %></p>
-  <% else %>
-    <%= simple_form_for :deck, url: set_current_path do |f| %>
-      <%= f.hidden_field :deck_id, value: deck.id %>
-      <%= f.submit t(".current_button") %>
-    <% end %>
+        <div class="inline">
+        <% if current_user.current_deck == deck %>
+          <span class="label label-success"><%= t(".label") %></span>
+        <% else %>
+          <%= simple_form_for :deck, url: set_current_path do |f| %>
+            <%= f.hidden_field :deck_id, value: deck.id %>
+            <%= f.submit t(".current_button"), class: "btn btn-success btn-xs" %>
+          <% end %>
+        <% end %>
+        <%= link_to t("buttons.edit"), edit_deck_path(deck),
+          class: "btn btn-warning btn-xs" %>
+        <%= link_to t("buttons.delete"), deck_path(deck),
+          class: "btn btn-danger btn-xs", method: :delete,
+          data: { confirm: t(".delete_confirm") } %>
+      </div>
+      </div>
+    </div>
   <% end %>
-  <hr>
-<% end %>
+</div>
