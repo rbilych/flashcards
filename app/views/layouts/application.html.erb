@@ -23,7 +23,6 @@
         <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li><%= link_to t("menu.decks"), decks_path %></li>
-            <li><%= link_to t("menu.cards"), cards_path %></li>
             <li><%= link_to t("menu.new_card"), new_card_path %></li>
             <li><%= link_to t("menu.profile"), edit_profile_path(current_user) %></li>
             <li><%= link_to t("menu.logout"), log_out_path, method: :delete %></li>

@@ -1,5 +1,38 @@
 <h1><%= @deck.title %></h1>
+<hr>
 
-<% @deck.cards.each do |card| %>
-  <li><%= card.original_text %></li>
-<% end %>
+<div class="row">
+  <% @deck.cards.each do |card| %>
+    <div class="col-md-3">
+      <div class="well text-center">
+        <div class="thumbnail">
+          <% if card.image.exists? %>
+            <%= image_tag card.image.url %>
+          <% else %>
+            <%= image_tag "noimage.png" %>
+          <% end %>
+        </div>
+        <p>
+          <%= t("dashboard.cards.labels.original") %>:
+          <strong><%= card.original_text %></strong>
+        </p>
+        <p>
+          <%= t("dashboard.cards.labels.translated") %>:
+          <strong><%= card.translated_text %></strong>
+        </p>
+        <p>
+          <%= t("dashboard.cards.labels.date") %>:
+          <strong><%= card.review_date.strftime("%d/%m/%Y") %></strong>
+        </p>
+
+        <p>
+          <%= link_to t("buttons.edit"), edit_card_path(card),
+            class: "btn btn-warning btn-xs" %>
+          <%= link_to t("buttons.delete"), card_path(card),
+            class: "btn btn-danger btn-xs", method: :delete,
+            data: { confirm: t("buttons.delete_confirm") } %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
