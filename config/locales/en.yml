@@ -61,7 +61,8 @@ en:
 
     reviews:
       welcome:
-        call_to_action: "The world's first user-friendly flash cards manager."
+        call_to_action: "Web application for learning foreign words using flashcards."
+        description: "You can create cards with original and translated text. Also you can add image to card. Cards can be grouped to decks. For best memorization, app use <a href='http://www.supermemo.com/english/ol/sm2.htm'>SuperMemo2</a> algorithm."
         button: "Sign Up Now !"
       review_card:
         message: "No cards for review"
