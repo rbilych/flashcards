@@ -3,8 +3,6 @@
 
 # FlashCards App
 
-[flashcards.pp.ua](http://flashcards.pp.ua/)
-
 ---
 
 Web application for learning foreign words using flashcards.
